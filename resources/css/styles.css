@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: serif;
+    box-sizing: border-box;
+}
+
+.header{
+    width: 100%;
+}
+.header .top_header{
+    max-width: 100%;
+    display: flex;
+    padding: 15px 15px;
+    background: #faee0a;
+}
+
+.header .top_header .icon
+{
+    margin-left: 10px ;
+    color: rgb(0, 0, 0);
+}
+
+.header .top_header .info p
+{
+    margin-left: 10px;
+    font-family: serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color:rgb(0, 0, 0);
+}
+
+.header .top_header .nav ul li{
+    list-style: none;
+}
+
+.header .top_header .nav ul li a{
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 900;
+    transition: 0.5s;
+}
+
+.header .top_header .nav ul li a:hover
+{
+    color: rgb(0, 89, 255);
+    font-size: large;
+}
