@@ -8,7 +8,7 @@
 
     <div class="container my-4">
         <div class="d-flex justify-content-between align-items-center mb-4"> 
-            <div class="h2">All Abouts</div>
+            <div class="h2">List of Abouts</div>
             <a href="{{ route('about.create') }}" class="btn btn-primary">Add About</a> 
         </div>
 
@@ -41,6 +41,10 @@
                 
             </tbody>
         </table>
+
+        <div class="row">
+            {{ $about->links() }}
+        </div>
     </div>
 
 

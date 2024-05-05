@@ -29,7 +29,7 @@
                     <label for="image" class="form-label mt-4">Image</label>
                     <input type="file" name="image" id="image" class="form-control">
                     <img src="{{ asset('uploads/sliders/'.$slider->image) }}" width="70px" height="70px" alt="Image"> 
-                    
+                    <br>
     
                     <label for="" class="form-label mt-4">Description</label>
                     <input type="text" name="description" class="form-control" value="{{ $slider->description }}">

@@ -14,11 +14,10 @@
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <h2>Content Management System</h2>
-            <a class="navbar-brand ms-2" href="/">Home</a> 
-            <a class="navbar-brand ms-2" href="{{ route('sliders') }}">Slider</a>
-            
-            <a class="navbar-brand" href="{{ route('about') }}">About</a>
-            <a class="navbar-brand ms-3" href="{{ route('blog') }}">Blog</a> 
+            <a class="navbar-brand s-1" href="/">Home</a> 
+            <a class="navbar-brand s-4" href="{{ route('sliders') }}">Slider</a>
+            <a class="navbar-brand s-4" href="{{ route('about') }}">About</a>
+            <a class="navbar-brand s-3" href="{{ route('blog') }}">Blog</a> 
         </div>
     </nav>
 

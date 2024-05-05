@@ -1,25 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
+use  App\Models\Blog;
 
-use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
-
-
 
 class BlogController extends Controller
 {
     public function index()
     {
-        $blog = Blog::all();
+        $blog = Blog::paginate(5);
         return view('blog.index', compact('blog'));
     }
 
     public function create()
     {
+
         return view('blog.create');
+        
     }
 
     public function store(Request $request)
@@ -38,7 +37,7 @@ class BlogController extends Controller
         $blog->description = $request['description'];
 
         $blog->save();
-        return redirect()->back()->with('status', 'Blog has added successfully');
+        return redirect(route('blog'))->with('status', 'Blog has added successfully');
     }
 
     public function edit($id)
@@ -67,7 +66,7 @@ class BlogController extends Controller
         $blog->description = $request['description'];
 
         $blog->update();
-        return redirect()->back()->with('status', 'Blog has update successfully');
+        return redirect(route('blog'))->with('status', 'Blog has update successfully');
 
     }
 
@@ -80,7 +79,8 @@ class BlogController extends Controller
             File::delete($destination);
         }
         $blog->delete();
-        return redirect()->back()->with('status', 'Blog has update successfully');
+        return redirect()->back()->with('status', 'blog has update successfully');
 
     }
+
 }

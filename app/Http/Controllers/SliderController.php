@@ -10,13 +10,15 @@ class SliderController extends Controller
 {
     public function index()
     {
-        $slider = Slider::all();
+        $slider = Slider::cursorPaginate(5);
         return view('slider.index', compact('slider'));
     }
 
     public function create()
     {
+
         return view('slider.create');
+        
     }
 
     public function store(Request $request)
@@ -35,7 +37,7 @@ class SliderController extends Controller
         $slider->description = $request['description'];
 
         $slider->save();
-        return redirect()->back()->with('status', 'Slider has added successfully');
+        return redirect(route('sliders'))->with('status', 'Slider has added successfully');
     }
 
     public function edit($id)
@@ -64,7 +66,7 @@ class SliderController extends Controller
         $slider->description = $request['description'];
 
         $slider->update();
-        return redirect()->back()->with('status', 'Slider has update successfully');
+        return redirect(route('sliders'))->with('status', 'Slider has update successfully');
 
     }
 

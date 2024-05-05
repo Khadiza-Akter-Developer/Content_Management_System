@@ -11,21 +11,19 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $about = About::all();
+        $about = About::paginate(5);
         return view('about.index', compact('about'));
     }
 
     public function create()
     {
-        
-            $data = About::paginate(5); 
-            return view('about.create', compact('data'));
+        return view('about.create');
 
     }
 
     public function store(Request $request)
     {
-        $about = new About;
+        $about = new About();
         $about->title = $request['title'];
 
         if($request->hasFile(['image']))
@@ -68,7 +66,7 @@ class AboutController extends Controller
         $about->description = $request['description'];
 
         $about->update();
-        return redirect()->back()->with('status', 'About has update successfully');
+        return redirect(route('about'))->with('status', 'About has update successfully');
 
     }
 
