@@ -17,7 +17,10 @@ class AboutController extends Controller
 
     public function create()
     {
-        return view('about.create');
+        
+            $data = About::paginate(5); 
+            return view('about.create', compact('data'));
+
     }
 
     public function store(Request $request)
@@ -36,7 +39,7 @@ class AboutController extends Controller
         $about->description = $request['description'];
 
         $about->save();
-        return redirect()->back()->with('status', 'About has added successfully');
+        return redirect(route('about'))->with('status', 'About has added successfully');
     }
 
     public function edit($id)

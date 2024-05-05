@@ -5,13 +5,14 @@
 @endpush
 
 @section('main-section')
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-3"> 
+
+    <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center mb-4"> 
             <div class="h2">All Abouts</div>
             <a href="{{ route('about.create') }}" class="btn btn-primary">Add About</a> 
         </div>
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
