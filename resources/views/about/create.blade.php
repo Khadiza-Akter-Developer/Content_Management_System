@@ -1,10 +1,11 @@
-@extends('layouts.header')
+@extends('layouts.sidenav')
 
 @push('head')
     <title>About</title>
 @endpush
 
 @section('main-section')
+<link rel="stylesheet" href="{{asset('CSS/About/about_create.css')}}">
 
 
     <div class="container">
@@ -12,27 +13,31 @@
 <h6 class="alert alert-success">{{ session('status') }}</h6>
     
 @endif 
-        <div class="d-flex justify-content-between align-items-center my-5 ">
+        <div class="container">
             <div class="h2">Create About</div>
-            <a href="{{ route('about') }}" class="btn btn-primary">Back</a> 
+            <a href="{{ route('about') }}" class="btn">Back</a> 
         </div>
 
-           <div class="card">
-            <div class="card-body">
+        <div class="wrapper">
                 <form action="{{ route('about.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <label for="" class="form-label mt-4">Title</label>
+                    <div class="input-title">
+                        <label for="" class="form-label mt-4">Title</label>
                     <input type="text" name="title" class="form-control">
-                
+                    </div>
+
+                    <div class="input-image">
+                        <label for="image" class="form-label mt-4">Image</label>
+                        <input type="file" name="image" id="image" class="form-control">
+                    </div>
+
+                    <div class="input-description">
+                        <label for="" class="form-label mt-4">Description</label>
+                        <input type="text" name="description" class="form-control">
+                    </div>
     
-                    <label for="image" class="form-label mt-4">Image</label>
-                    <input type="file" name="image" id="image" class="form-control">
-                    
-    
-                    <label for="" class="form-label mt-4">Description</label>
-                    <input type="text" name="description" class="form-control">
-    
-                    <button class="btn btn-primary mt-4">Save</button>
+                   
+                    <button type="submit" class="btn btn-primary mt-4">Save</button>
                 </form>
     
             </div>

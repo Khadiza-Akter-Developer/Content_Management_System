@@ -1,18 +1,20 @@
-@extends('layouts.header')
+@extends('layouts.sidenav')
 
 @push('head')
     <title>About</title>
 @endpush
 
 @section('main-section')
+<link rel="stylesheet" href="{{asset('CSS/About/about.css')}}">
 
-    <div class="container my-4">
-        <div class="d-flex justify-content-between align-items-center mb-4"> 
+
+    <div class="container">
             <div class="h2">List of Abouts</div>
             <a href="{{ route('about.create') }}" class="btn btn-primary">Add About</a> 
-        </div>
+    </div>
+    <br>
 
-        <table class="table table-striped table-hover">
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -32,8 +34,8 @@
                         <td><img src="{{ asset('uploads/abouts/'.$list->image) }}" width="70px" height="70px" alt="Image"></td> 
                         <td>{{ $list->description }}</td> 
                         
-                        <td><a href="{{ url('about-edit/'.$list->id) }}" class="btn btn-primary">Edit</a></td>
-                        <td><a href="{{ url('about-delete/'.$list->id) }}" class="btn btn-danger">Delete</a></td>
+                        <td><a href="{{ url('about-edit/'.$list->id) }}" class="btn-edit">Edit</a></td>
+                        <td><a href="{{ url('about-delete/'.$list->id) }}" class="btn-delete">Delete</a></td>
                     </tr>
                     
                 </tr>
@@ -45,7 +47,7 @@
         <div class="row">
             {{ $about->links() }}
         </div>
-    </div>
+
 
 
 @endsection

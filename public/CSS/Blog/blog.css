@@ -1,0 +1,99 @@
+.h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 55px 60px ;
+    color: white;
+}
+
+.btn {
+    
+    display: inline-block;
+    font-weight: 600;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 3px solid black;
+    padding: 5px 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 8px;
+    color: white;
+}
+.btn:hover{
+    color: white;
+    background-color: rgb(80, 83, 95);
+}
+
+.btn-edit {
+    display: inline-block;
+    font-weight: 600;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 2px solid black;
+    padding: 5px 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 8px;
+}
+
+.btn-edit:hover {
+    color: #fff;
+    background-color: #64a8f2;
+    border-color: #4b89cc;
+}
+
+.btn-delete {
+    display: inline-block;
+    font-weight: 600;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 2px solid rgb(227, 2, 2);
+    padding: 5px 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 8px;
+}
+
+.btn-delete:hover {
+    color: #fff;
+    background-color: #d6051a;
+    border-color: #bd2130;
+}
+
+.table {
+    width: 80%;
+    margin-bottom: 1rem;
+    margin: 0 auto;
+    text-align: center;
+    color: #000408;
+    border-collapse: collapse;
+    font-size: medium;
+}
+
+.table th,
+.table td {
+    padding: .75rem;
+    vertical-align: top;
+    border: 1px solid #000000;
+}
+
+.table th {
+    background-color: #b5c0cb;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .06);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+
+.table-striped tbody tr:hover {
+    background-color: rgba(0, 0, 0, .075);
+}

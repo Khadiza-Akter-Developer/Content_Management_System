@@ -1,17 +1,19 @@
-@extends('layouts.header')
+@extends('layouts.sidenav')
 
 @push('head')
     <title>Slider</title>
 @endpush
 
 @section('main-section')
+<link rel="stylesheet" href="{{asset('CSS/Slider/slider.css')}}">
+
     <div class="container my-4">
-        <div class="d-flex justify-content-between align-items-center mb-3"> 
+        <div class="container"> 
             <div class="h2">All Sliders</div>
-            <a href="{{ route('slider.create') }}" class="btn btn-primary">Add Slider</a> 
+            <a href="{{ route('slider.create') }}" class="btn">Add Slider</a> 
         </div>
 
-        <table class="table table-bordered table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -29,8 +31,8 @@
                     <td>{{ $item->title }}</td>
                     <td><img src="{{ asset('uploads/sliders/'.$item->image) }}" width="70px" height="70px" alt="Image"></td>
                     <td>{{ $item->description }}</td> 
-                    <td><a href="{{ url('slider-edit/'.$item->id) }}" class="btn btn-primary">Edit</a></td>
-                    <td><a href="{{ url('slider-delete/'.$item->id) }}" class="btn btn-danger">Delete</a></td>
+                    <td><a href="{{ url('slider-edit/'.$item->id) }}" class="btn-edit">Edit</a></td>
+                    <td><a href="{{ url('slider-delete/'.$item->id) }}" class="btn-delete">Delete</a></td>
 
                 </tr>
                 @endforeach

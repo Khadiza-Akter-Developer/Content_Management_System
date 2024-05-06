@@ -21,25 +21,7 @@
         </div>
     </nav>
 
-      
-   {{-- <div class="header">
-    <div class="top_header">
-        <div class="icon">
-
-        </div>
-        <div class="info"><p>Content Management System</p></div>
-
-        <div class="nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="{{ route('sliders') }}">Slider</a></li>
-                <li><a href="">Blog</a></li>
-
-            </ul>
-        </div>
-    </div>
-   </div> --}}
+    
 
    @yield('main-section')
 </body>

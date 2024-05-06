@@ -11,7 +11,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $about = About::paginate(5);
+        $about = About::cursorPaginate(5);
         return view('about.index', compact('about'));
     }
 
