@@ -1,20 +1,19 @@
-/* header.css */
 
-/* Reset default margin and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    padding-left: 60px;
 }
 
-/* Container styles */
+
 .container {
-    background-color: #f0f0f0; /* Light background color */
-    color: #333; /* Dark text color */
-    padding: 20px; /* Padding inside the container */
-    text-align: center; /* Center align text */
+    background-color: #cecaca; 
+    color: #333;
+    padding: 20px; 
+    text-align: center; 
 }
 
 .container p {
-    font-size: 18px; /* Font size of the paragraph */
+    font-size: 18px; 
 }

@@ -1,4 +1,4 @@
-@extends('layouts.sidenav')
+@extends('layouts.navbar')
 
     @section('main-section')
     <div class="main">

@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="{{asset('CSS/sidenav.css')}}">
     <script>src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'</script>
 <body>
-    <input type="checkbox" id="check">
+    
+    {{-- <input type="checkbox" id="check">
     <label for="check">
         <i class="fas fa-bars" id="btn"></i>
         <i class="fas fa-times" id="cancel"></i>
+    </label> --}}
 
-    </label>
     <div class="sidebar">
        
         <header>Content Management System</header>
@@ -26,6 +27,7 @@
     <section>
 
         @yield('main-section')
+
     </section>
 </body>
 </html> 
