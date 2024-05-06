@@ -40,5 +40,12 @@ Route::get('about-delete/{id}',[AboutController::class, 'delete']);
 
 
 
+//header route
+Route::get('header',function(){
+    return view('layouts.header');
+});
 
+Route::get('footer',function(){
+    return view('layouts.footer');
+});
 

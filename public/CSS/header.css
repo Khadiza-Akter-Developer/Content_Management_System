@@ -1,0 +1,20 @@
+/* header.css */
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container styles */
+.container {
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Dark text color */
+    padding: 20px; /* Padding inside the container */
+    text-align: center; /* Center align text */
+}
+
+.container p {
+    font-size: 18px; /* Font size of the paragraph */
+}
