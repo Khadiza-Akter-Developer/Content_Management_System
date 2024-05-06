@@ -41,8 +41,6 @@
         </table>
         {{ $slider->links() }}
     </div>
-
-
 @endsection
 
 {{-- @include('layouts.footer') --}}

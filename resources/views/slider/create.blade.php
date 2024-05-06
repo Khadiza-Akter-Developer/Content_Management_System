@@ -35,10 +35,9 @@
                         <label for="" class="form-label mt-4">Description</label>
                     <input type="text" name="description" class="form-control">
                     </div>
-                    
-                    <div class="btn-save">
-                        <button type="submit">Save</button>
-                    </div>
+
+                        <button type="submit" class="btn-save">Save</button>
+
 
                 </form>
     

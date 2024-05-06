@@ -17,7 +17,7 @@
        
         <header>Content Management System</header>
         <ul>
-            <li><a href="#" ><i class="fas fa-book-open"></i>Dashboard</a></li>
+            <li><a href="/" ><i class="fas fa-book-open"></i>Dashboard</a></li>
             <li><a href="{{ route('sliders') }}"><i class='fas fa-book-open'></i>Slider Page</a></li>
             <li><a href="{{ route('blog') }}"><i class='fas fa-book-open'></i>Blog Page</a></li>
             <li><a href="{{ route('about') }}"><i class='fas fa-book-open'></i>About Page</a></li>
