@@ -1,4 +1,4 @@
-@extends('layouts.sidenav')
+@extends('layouts.navbar')
 
 @push('head')
     <title>Slider</title>

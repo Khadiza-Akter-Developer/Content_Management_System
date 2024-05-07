@@ -12,8 +12,8 @@
         <div class="sidebar">
             <h2>Content Management System</h2>
             <ul>
-                <li><a href="#" ><i class="bi bi-house"></i>Dashboard</a></li>
-                <li><a href="#" ><i class="bi bi-body-text"></i>Slider Page</a></li>
+                <li><a href="#" class="active" ><i class="bi bi-house"></i>Dashboard</a></li>
+                <li><a href="{{ route('sliders') }}"><i class="bi bi-body-text"></i>Slider Page</a></li>
                 <li><a href="#" ><i class="bi bi-file-earmark-person"></i>About Page</a></li>
                 <li><a href="#" ><i class="bi bi-substack"></i>Blog Page</a></li>
 
@@ -26,10 +26,19 @@
         </div>
 
         <div class="main_content">
-            <div class="header">Explore more</div>
-            <div class="info">
-                <div></div>
+            <header>
+                <h2>
+                    {{-- <label for="">
+                        <span class=""></span>
+                    </label> --}}
+               Explore More
+            </h2>
+            <div class="search-wrapper">
+                <input type="search" placeholder="Search here"/>
+                <i class="bi bi-search"></i>
             </div>
+
+            </header>
         </div>
     </div>
 </body>
