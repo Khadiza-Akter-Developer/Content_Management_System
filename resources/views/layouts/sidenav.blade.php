@@ -1,33 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('CSS/sidenav.css')}}">
-    <script>src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'</script>
-<body>
-    
-    {{-- <input type="checkbox" id="check">
-    <label for="check">
-        <i class="fas fa-bars" id="btn"></i>
-        <i class="fas fa-times" id="cancel"></i>
-    </label> --}}
+ <!-- Main Sidebar Container -->
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <span class="brand-text font-weight-light">Content Management</span>
+    </a>
 
+    <!-- Sidebar -->
     <div class="sidebar">
-       
-        <header>Content Management System</header>
-        <ul>
-            <li><a href="/" ><i class="fas fa-book-open"></i>Dashboard</a></li>
-            <li><a href="{{ route('sliders') }}"><i class='fas fa-book-open'></i>Slider Page</a></li>
-            <li><a href="{{ route('blog') }}"><i class='fas fa-book-open'></i>Blog Page</a></li>
-            <li><a href="{{ route('about') }}"><i class='fas fa-book-open'></i>About Page</a></li>
-        </ul>
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                <a href="{{ route('welcome') }}" class="nav-link">
+                  <i class="nav-icon bi bi-file-earmark-person"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+              </li>
+
+               <li class="nav-item">
+                <a href="{{ route('sliders') }}" class="nav-link">
+                  <i class="nav-icon bi bi-sliders"></i>
+                  <p>
+                   Slider
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('about') }}" class="nav-link">
+                  <i class="nav-icon bi bi-file-earmark-person"></i>
+                  <p>
+                    About
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('blog') }}" class="nav-link">
+                  <i class="nav-icon bi bi-substack"></i>
+                  <p>
+                    Blog
+                  </p>
+                </a>
+              </li>
+          </ul>
+      </nav>
+    
+      <!-- /.sidebar-menu -->
     </div>
-    <section>
-
-        @yield('main-section')
-
-    </section>
-</body>
-</html> 
+    <!-- /.sidebar -->
+  </aside>

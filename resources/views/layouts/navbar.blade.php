@@ -27,10 +27,7 @@
 
         <div class="main_content">
             <header>
-                <h2>
-                    {{-- <label for="">
-                        <span class=""></span>
-                    </label> --}}
+            <h2>
                Explore More
             </h2>
             <div class="search-wrapper">
