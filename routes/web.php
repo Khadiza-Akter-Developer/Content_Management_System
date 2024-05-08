@@ -42,5 +42,5 @@ Route::get('about-delete/{id}',[AboutController::class, 'delete']);
 
 //website
 Route::get('website', function(){
-    return view('website.blog.single');
+    return view('auth.dashboard');
 });
