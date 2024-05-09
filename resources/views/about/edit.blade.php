@@ -1,4 +1,68 @@
-@extends('layouts.sidenav')
+@extends('layout.auth')
+
+@section('content')
+<div class="main-panel">
+    <div class="content-wrapper">
+    <div class="row">
+    
+        <div class="col-12 grid-margin stretch-card">
+    
+          <div class="card">
+    
+            <div class="card-body">
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="{{ route('about') }}" class="btn btn-dark me-2">Back</a>
+                  </div>
+    
+              <h4 class="card-title">Update About</h4>
+              <form class="forms-sample" action="{{ url('about-update', $about->id)}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                  <label for="" class="form-label">Title</label>
+                  <input type="text" class="form-control" name="title" value="{{ $about->title }}">
+                </div>
+                <div class="form-group">
+                  <label for="">Image</label>
+                  <input type="file" id="image" class="form-control"  name="image">
+                  <img src="{{ asset('uploads/abouts/'.$about->image) }}" width="70px" height="70px" alt="Image"> 
+                  <br>
+                </div>
+                <div class="form-group">
+                  <label for="">Description</label>
+                  <input type="text" class="form-control"  name="description" value="{{ $about->description }}">
+                </div>
+               
+                <button type="submit" class="btn btn-dark btn-md btn-block">Update</button>
+                <button class="btn btn-dark">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+        </div>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- @extends('layouts.sidenav')
 
 @push('head')
     <title>About</title>
@@ -50,4 +114,4 @@
             </div>
            </div>
         </div>
-@endsection
+@endsection --}}

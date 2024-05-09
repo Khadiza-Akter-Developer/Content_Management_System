@@ -3,7 +3,8 @@
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AboutController;
-
+use App\Http\Controllers\Auth\DashboardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -41,6 +42,11 @@ Route::get('about-delete/{id}',[AboutController::class, 'delete']);
 
 
 //website
-Route::get('website', function(){
-    return view('auth.dashboard');
+Route::get('/', function(){
+    return 'home page';
 });
+
+
+Auth::routes();
+
+Route::get('auth/dashboard',[DashboardController::class, 'dashboard'])->name('auth.dashboard')->middleware('auth');
