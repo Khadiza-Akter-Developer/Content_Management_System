@@ -54,6 +54,10 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      {{ $slider->links() }}
+    </div>
   </div> 
 @endsection
 

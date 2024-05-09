@@ -49,11 +49,13 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      {{ $blog->links() }}
+    </div>
   </div> 
 
-  <div class="row">
-    {{ $blog->links() }}
-  </div>
+ 
 @endsection
 
 
