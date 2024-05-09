@@ -11,7 +11,7 @@
     
             <div class="card-body">
                 <div class="d-flex justify-content-end mb-3">
-                    <a href="{{ route('sliders') }}" class="btn btn-dark me-2">Back</a>
+                    <a href="{{ route('sliders') }}" class="btn btn-dark me-2 btn-sm">Back</a>
                   </div>
     
               <h4 class="card-title">Update Slider</h4>
@@ -24,6 +24,7 @@
                 <div class="form-group">
                   <label for="">Image</label>
                   <input type="file" id="image" class="form-control"  name="image">
+                  <br>
                   <img src="{{ asset('uploads/sliders/'.$slider->image) }}" width="70px" height="70px" alt="Image"> 
                   <br>
                 </div>
@@ -32,8 +33,8 @@
                   <input type="text" class="form-control"  name="description" value="{{ $slider->description }}">
                 </div>
                
-                <button type="submit" class="btn btn-dark btn-md btn-block">Update</button>
-                <button class="btn btn-dark">Cancel</button>
+                <button type="submit" class="btn btn-dark btn-md btn-block  btn-sm">Update</button>
+                <button class="btn btn-dark btn-sm">Cancel</button>
               </form>
             </div>
           </div>

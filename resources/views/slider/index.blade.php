@@ -12,7 +12,7 @@
     <div class="page-header">
       <h3 class="page-title">List of Slider </h3>
       <div class="d-flex justify-content-end mb-3">
-        <a href="{{ route('slider.create') }}" class="btn btn-dark btn-lg btn-block me-2">Add Slider</a>
+        <a href="{{ route('slider.create') }}" class="btn btn-dark btn-lg btn-block me-2 btn-sm">Add Slider</a>
       </div>
     </div>
    
@@ -40,8 +40,8 @@
                     <td>{{ $item->title }}</td>
                     <td><img src="{{ asset('uploads/sliders/'.$item->image) }}" width="70px" height="70px" alt="Image"></td>
                     <td>{{ $item->description }}</td> 
-                    <td><a href="{{ url('slider-edit/'.$item->id) }}" class="btn btn-secondary btn-fw">Edit</a></td>
-                    <td><a href="{{ url('slider-delete/'.$item->id) }}" class="btn btn-danger">Delete</a></td>
+                    <td><a href="{{ url('slider-edit/'.$item->id) }}" class="btn btn-secondary btn-sm">Edit</a></td>
+                    <td><a href="{{ url('slider-delete/'.$item->id) }}" class="btn bg-danger btn-sm">Delete</a></td>
 
                 </tr>
                 @endforeach 

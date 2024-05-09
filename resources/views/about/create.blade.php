@@ -10,7 +10,7 @@
     
             <div class="card-body">
                 <div class="d-flex justify-content-end mb-3">
-                    <a href="{{ route('about') }}" class="btn btn-gradient-dark btn-fw">Back</a>
+                    <a href="{{ route('about') }}" class="btn btn-gradient-dark btn-sm">Back</a>
                   </div>
     
               <h4 class="card-title">Create About</h4>
@@ -29,8 +29,8 @@
                   <input type="text" class="form-control" placeholder="Description" name="description">
                 </div>
                
-                <button type="submit" class="btn btn-gradient-dark btn-fw">Submit</button>
-                <button class="btn btn-gradient-dark btn-fw">Cancel</button>
+                <button type="submit" class="btn btn-gradient-dark btn-sm">Submit</button>
+                <button class="btn btn-gradient-dark btn-sm">Cancel</button>
               </form>
             </div>
           </div>

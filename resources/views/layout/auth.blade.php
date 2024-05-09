@@ -204,21 +204,21 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('sliders') }}">
                 <span class="menu-title">Slider</span>
-                <i class="mdi mdi-format-line-weight"></i>
+                <i class="mdi menu-icon mdi-format-line-weight"></i>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="{{ route('about') }}">
                 <span class="menu-title">About</span>
-                <i class="mdi mdi-account-box"></i>
+                <i class="mdi mdi-account-box menu-icon"></i>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="{{ route('blog') }}">
                 <span class="menu-title">Blog</span>
-                <i class="mdi mdi-format-line-weight"></i>
+                <i class="mdi mdi-format-line-weight menu-icon"></i>
               </a>
             </li>
 

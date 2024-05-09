@@ -7,7 +7,7 @@
     <div class="page-header">
       <h3 class="page-title">List of Blog </h3>
       <div class="d-flex justify-content-end mb-3">
-        <a href="{{ route('blog.create') }}" class="btn btn-dark btn-lg btn-block me-2">Add Blog</a>
+        <a href="{{ route('blog.create') }}" class="btn btn-sm btn-dark btn-lg btn-block me-2">Add Blog</a>
       </div>
     </div>
    
@@ -35,8 +35,8 @@
                     <td>{{ $it->title }}</td>
                     <td><img src="{{ asset('uploads/blogs/'.$it->image) }}" width="70px" height="70px" alt="Image"></td>
                     <td>{{ $it->description }}</td> 
-                    <td><a href="{{ url('blog-edit/'.$it->id) }}" class="btn btn-secondary btn-fw">Edit</a></td>
-                    <td><a href="{{ url('blog-delete/'.$it->id) }}" class="btn btn-danger">Delete</a></td>
+                    <td><a href="{{ url('blog-edit/'.$it->id) }}" class="btn btn-sm btn-secondary">Edit</a></td>
+                    <td><a href="{{ url('blog-delete/'.$it->id) }}" class="btn btn-sm bg-danger">Delete</a></td>
 
                 </tr>
                 @endforeach
@@ -50,6 +50,10 @@
       </div>
     </div>
   </div> 
+
+  <div class="row">
+    {{ $blog->links() }}
+  </div>
 @endsection
 
 

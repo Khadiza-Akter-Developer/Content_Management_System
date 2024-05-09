@@ -10,7 +10,7 @@
     
             <div class="card-body">
                 <div class="d-flex justify-content-end mb-3">
-                    <a href="{{ route('blog') }}" class="btn btn-dark me-2">Back</a>
+                    <a href="{{ route('blog') }}" class="btn btn-sm btn-dark me-2">Back</a>
                   </div>
     
               <h4 class="card-title">Update Blog</h4>
@@ -23,7 +23,8 @@
                 <div class="form-group">
                   <label for="">Image</label>
                   <input type="file" id="image" class="form-control"  name="image">
-                  <img src="{{ asset('uploads/blogs/'.$blog->image) }}" width="70px" height="70px" alt="Image"> 
+                  <br>
+                  <img src="{{ asset('uploads/blogs/'.$blog->image) }}" width="80px" height="70px" alt="Image"> 
                   <br>
                 </div>
                 <div class="form-group">
@@ -31,8 +32,8 @@
                   <input type="text" class="form-control"  name="description" value="{{ $blog->description }}">
                 </div>
                
-                <button type="submit" class="btn btn-dark btn-md btn-block">Update</button>
-                <button class="btn btn-dark">Cancel</button>
+                <button type="submit" class="btn btn-sm btn-dark btn-md btn-block">Update</button>
+                <button class="btn btn-sm btn-dark">Cancel</button>
               </form>
             </div>
           </div>
