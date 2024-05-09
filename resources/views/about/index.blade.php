@@ -53,6 +53,10 @@
         </div>
       </div>
     </div> 
+
+    <div class="row">
+      {{ $about->links() }}
+    </div>
     @endsection
 
 
