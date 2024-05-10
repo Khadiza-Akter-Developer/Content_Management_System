@@ -11,7 +11,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $about = About::cursorPaginate(5);
+        $about = About::simplePaginate(5);
         return view('about.index', compact('about'));
     }
 
@@ -83,3 +83,4 @@ class AboutController extends Controller
 
     }
 }
+
