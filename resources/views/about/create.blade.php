@@ -14,6 +14,18 @@
                   </div>
     
               <h4 class="card-title">Create About</h4>
+
+              @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
               <form class="forms-sample" action="{{ route('about.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

@@ -23,6 +23,12 @@ class AboutController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title'=>'required',
+            'image'=>'required',
+            'description'=> 'required'
+        ]);
+
         $about = new About();
         $about->title = $request['title'];
 
@@ -79,7 +85,7 @@ class AboutController extends Controller
             File::delete($destination);
         }
         $about->delete();
-        return redirect()->back()->with('status', 'About has update successfully');
+        return redirect()->back()->with('status', 'About has been deleted successfully');
 
     }
 }
