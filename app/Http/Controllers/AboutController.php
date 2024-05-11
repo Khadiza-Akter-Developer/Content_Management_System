@@ -76,7 +76,7 @@ class AboutController extends Controller
 
     }
 
-    public function delete($id)
+    public function delete($id, Request $request)
     {
         $about = About::find($id);
         $destination = 'uploads/abouts/'.$about->image;
@@ -85,8 +85,9 @@ class AboutController extends Controller
             File::delete($destination);
         }
         $about->delete();
-        return redirect()->back()->with('status', 'About has been deleted successfully');
 
+        $request->session()->flash('alert-success', 'Created Successfully');
+        return redirect()->route('about.index');
     }
 }
 

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('assets/auth/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/auth/images/favicon.ico') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   </head>
   <body>
     <div class="container-scroller">
@@ -272,5 +274,13 @@
     });
   });
 </script>
+
+<script>
+  @if(Session::has('alert-success'))
+      Swal("Good job!, {{ Session::get('alert-success') }}", "success");
+  @endif
+  </script>
+  
+
 </body>
 </html>  
