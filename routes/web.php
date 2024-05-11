@@ -4,6 +4,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Auth\DashboardController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,10 +43,7 @@ Route::get('about-delete/{id}',[AboutController::class, 'delete']);
 
 
 //website
-Route::get('/', function(){
-    return 'home page';
-});
-
+Route::get('/', [WebsiteController::class, 'home'])->name('home');
 
 Auth::routes();
 
