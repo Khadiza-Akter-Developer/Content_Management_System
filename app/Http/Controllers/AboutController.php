@@ -76,18 +76,25 @@ class AboutController extends Controller
 
     }
 
-    public function delete($id, Request $request)
-    {
-        $about = About::find($id);
-        $destination = 'uploads/abouts/'.$about->image;
-        if(File::exists($destination))
-        {
-            File::delete($destination);
-        }
-        $about->delete();
+    public function delete($id)
+{
+    $about = About::find($id);
 
-        $request->session()->flash('alert-success', 'Created Successfully');
-        return redirect()->route('about.index');
+    if (!$about) {
+        return redirect()->back()->with('error', 'About not found');
     }
+
+    $destination = 'uploads/abouts/'.$about->image;
+    if(File::exists($destination))
+    {
+        File::delete($destination);
+    }
+
+    $about->delete();
+
+    return redirect()->back()->with('status', 'About has been deleted successfully');
+}
+
+    
 }
 

@@ -275,11 +275,6 @@
   });
 </script>
 
-<script>
-  @if(Session::has('alert-success'))
-      Swal("Good job!, {{ Session::get('alert-success') }}", "success");
-  @endif
-  </script>
   
 
 </body>
