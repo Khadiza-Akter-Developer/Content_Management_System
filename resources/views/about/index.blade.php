@@ -136,15 +136,14 @@
                             <td><img src="{{ asset('uploads/abouts/') }}/' + list.image + '" width="70px" height="70px" alt="Image"></td>\
                             <td>' + list.description + '</td>\
                             <td><button type="button" value="' + list.id + '" class="btn btn-secondary btn-sm edit_about">Edit</button></td>\
-                            <td><button type="button" value="' + list.id + '" class="btn btn-sm btn-danger">Delete</button></td>\
+                            <td><button type="button" value="' + list.id + '" class="btn btn-sm btn-danger delete_about">Delete</button></td>\
                         </tr>');
                             });
                         }
                     });
                 }
 
-                //edit on click
-
+                // Edit on click
                 $(document).on('click', '.edit_about', function(e) {
                     e.preventDefault();
                     var about_id = $(this).val();
@@ -172,7 +171,9 @@
                     let form_data = new FormData();
                     form_data.append('title', $('#edit_title').val());
                     form_data.append('description', $('#edit_description').val());
-                    form_data.append('edit_image', $('#edit_image')[0].files[0]);
+                    if ($('#edit_image')[0].files[0]) {
+                        form_data.append('image', $('#edit_image')[0].files[0]);
+                    }
 
                     $.ajaxSetup({
                         headers: {
@@ -213,16 +214,13 @@
                     });
                 });
 
-
-                $(document).on('click', ' .display_about', function(e) {
+                $(document).on('click', '.display_about', function(e) {
                     e.preventDefault();
                     $('#AddAboutModal').modal('show');
                 });
 
-
                 $(document).on('click', '.add_about', function(e) {
                     e.preventDefault();
-
 
                     let form_data = new FormData();
                     form_data.append('title', $('#title').val());
@@ -256,10 +254,12 @@
                                 $('#success_message').text(response.message)
                                 $('#AddAboutModal').modal('hide');
                                 $('#AddAboutModal').find('input').val("");
+                                fetchabout();
                             }
                         }
                     });
                 });
+
             });
         </script>
     @endsection

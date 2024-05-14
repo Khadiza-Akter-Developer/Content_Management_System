@@ -65,81 +65,6 @@ class AboutController extends Controller
     }
 
 
-
-    //     public function edit($id)
-    //     {
-    //         $about = About::find($id);
-
-    //         if ($about) {
-    //             return response()->json([
-    //                 'status' => 200,
-    //                 'about' => $about,
-    //             ]);
-    //         } else {
-    //             return response()->json([
-    //                 'status' => 404,
-    //                 'message' => 'About Data Not Found',
-    //             ]);
-    //         }
-    //     }
-
-    //     public function update(Request $request, $id)
-    // {   
-    //     $about = About::find($id);
-
-    //     if ($about) {
-    //         $about->title = $request->input('title');
-
-    //         if ($request->hasFile('image')) {
-    //             $destination = 'uploads/abouts/' . $about->image;
-    //             if (File::exists($destination)) {
-    //                 File::delete($destination);
-    //             }
-    //             $file = $request->file('image');
-    //             $extention = $file->getClientOriginalExtension();
-    //             $filename = time() . '.' . $extention;
-    //             $file->move('uploads/abouts/', $filename);
-    //             $about->image = $filename;
-    //         }
-
-    //         $about->description = $request->input('description');
-    //         $about->update();
-
-    //         return response()->json([
-    //             'status' => 200,
-    //             'message' => 'About data updated successfully',
-    //         ]);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 404,
-    //             'message' => 'About Data Not Found',
-    //         ]);
-    //     }
-    // }
-
-
-    // public function edit($id)
-    // {
-    //     $about = About::find($id);
-    //     if($about)
-    //     {
-    //         return response()->json([
-    //         'status' => 400,
-    //         'about' => $about,
-    //         ]);
-    //     }
-    //     else
-    //     {
-    //         return response()->json([
-    //             'status' => 200,
-    //             'message' => "About not found",
-    //             ]);
-    //     }
-    // }
-
-
-
-
     public function delete($id)
     {
         $about = About::find($id);
@@ -157,6 +82,8 @@ class AboutController extends Controller
 
         return redirect()->back()->with('status', 'About has been deleted successfully');
     }
+
+//Edit and Update data--------------------------------------------------
 
     public function edit($id)
     {
@@ -176,7 +103,8 @@ class AboutController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), 
+        [
             'title' => 'required|max:191',
             'description' => 'required',
             'edit_image' => 'nullable|mimes:jpg,png,jpeg|max:2048'
@@ -185,7 +113,7 @@ class AboutController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => 400,
-                'errors' => $validator->errors->all(),
+                'errors' => $validator->errors()->all(),
             ]);
         } else {
             $about = About::find($id);
@@ -203,7 +131,7 @@ class AboutController extends Controller
 
                 return response()->json([
                     'status' => 200,
-                    'message' => 'About Updated Successfully',
+                    'message' => 'About Updated Successfully.',
                 ]);
             } else {
                 return response()->json([
