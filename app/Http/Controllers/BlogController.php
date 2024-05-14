@@ -37,7 +37,7 @@ class BlogController extends Controller
         $blog->description = $request['description'];
 
         $blog->save();
-        return redirect(route('blog'))->with('status', 'Blog has added successfully');
+        return redirect(route('about'))->with('status', 'about has added successfully');
     }
 
     public function edit($id)

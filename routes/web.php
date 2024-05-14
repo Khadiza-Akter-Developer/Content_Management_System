@@ -34,9 +34,10 @@ Route::get('blog-delete/{id}',[BlogController::class, 'delete']);
 //about route
 Route::get('about', [AboutController::class, 'index'])->name('about');
 Route::get('about-add',[AboutController::class, 'create'])->name('about.create');
+Route::get('fetch_about', [AboutController::class,'fetch']);
 Route::post('about-store', [AboutController::class,'store'])->name('about.store');
-Route::get('about-edit/{id}',[AboutController::class, 'edit']);
-Route::post('about-update/{id}', [AboutController::class, 'update']);
+Route::get('about-edit/{id}', [AboutController::class, 'edit'])->name('about.edit');
+Route::post('about-update/{id}', [AboutController::class, 'update'])->name('about.update');
 Route::get('about-delete/{id}',[AboutController::class, 'delete']);
 
 
