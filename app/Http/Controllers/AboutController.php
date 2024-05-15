@@ -16,10 +16,10 @@ class AboutController extends Controller
         return view('about.index', compact('about'));
     }
 
-    public function create()
-    {
-        return view('about.create');
-    }
+    // public function create()
+    // {
+    //     return view('about.create');
+    // }
 
     public function fetch()
     {
@@ -65,32 +65,16 @@ class AboutController extends Controller
     }
 
 
-    public function delete($id)
-    {
-        $about = About::find($id);
-
-        if (!$about) {
-            return redirect()->back()->with('error', 'About not found');
-        }
-
-        $destination = 'uploads/abouts/' . $about->image;
-        if (File::exists($destination)) {
-            File::delete($destination);
-        }
-
-        $about->delete();
-
-        return redirect()->back()->with('status', 'About has been deleted successfully');
-    }
-
-//Edit and Update data--------------------------------------------------
+    //Edit and Update data--------------------------------------------------
 
     public function edit($id)
     {
         $about = About::find($id);
         if ($about) {
+            $type ='edit';
             return response()->json([
                 'status' => 200,
+                'type' => $type,
                 'about' => $about,
             ]);
         } else {
@@ -103,12 +87,14 @@ class AboutController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), 
-        [
-            'title' => 'required|max:191',
-            'description' => 'required',
-            'edit_image' => 'nullable|mimes:jpg,png,jpeg|max:2048'
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'title' => 'required|max:191',
+                'description' => 'required',
+                'edit_image' => 'nullable|mimes:jpg,png,jpeg|max:2048'
+            ]
+        );
 
         if ($validator->fails()) {
             return response()->json([
@@ -140,5 +126,25 @@ class AboutController extends Controller
                 ]);
             }
         }
+    }
+
+    //Delete data
+
+    public function delete($id)
+    {
+        $about = About::find($id);
+
+        if (!$about) {
+            return redirect()->back()->with('error', 'About not found');
+        }
+
+        $destination = 'uploads/abouts/' . $about->image;
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
+
+        $about->delete();
+
+        return redirect()->back()->with('status', 'About has been deleted successfully');
     }
 }

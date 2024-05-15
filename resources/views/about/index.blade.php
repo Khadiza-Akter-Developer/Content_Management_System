@@ -14,8 +14,15 @@
                     @csrf
                     <div class="form-group">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" id="title" class="form-control" placeholder="Title" name="title"
-                            value="{{ old('title') }}">
+
+                        @if()
+                        <input type="text" id="title"  required class="form-control" placeholder="Title" name="title"
+                        value="{{  }}">
+                        {{}}
+                        @else
+                        <input type="text" id="title"  required class="form-control" placeholder="Title" name="title"
+                        value="{{  }}">
+                        @endif
                     </div>
 
                     <div class="form-group">
@@ -30,17 +37,25 @@
                             name="description" value="{{ old('description') }}">
                     </div>
                 </div>
+
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-gradient-dark btn-sm" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn  btn-gradient-dark btn-sm add_about">Save</button>
+                    <button type="button" class="btn  btn-gradient-dark btn-sm edit_about">Update</button>
+                    <button type="button" class="btn  btn-gradient-dark btn-sm delete_about">Delete</button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm cancel_about" >Cancel</button>
+
                 </div>
-            </div>
+            </div>  
         </div>
     </div>
+
+
+    var 
     {{-- End Add Modal --}}
 
     {{-- Edit Modal --}}
-    <div class="modal" id="EditAboutModal" aria-labelledby="EditAboutModalLabel" aria-hidden="true">
+    {{-- <div class="modal" id="EditAboutModal" aria-labelledby="EditAboutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -72,8 +87,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- End Edit Modal --}}
+
+    {{-- Delete Modal --}}
+
+    
+
 
     <div class="main-panel">
         <div class="content-wrapper">
@@ -118,6 +138,9 @@
 
     @section('scripts')
         <script>
+
+        
+
             $(document).ready(function() {
 
                 fetchabout();
@@ -131,13 +154,13 @@
                             $('tbody').html("");
                             $.each(response.abouts, function(key, list) {
                                 $('tbody').append('<tr>\
-                            <td>' + list.id + '</td>\
-                            <td>' + list.title + '</td>\
-                            <td><img src="{{ asset('uploads/abouts/') }}/' + list.image + '" width="70px" height="70px" alt="Image"></td>\
-                            <td>' + list.description + '</td>\
-                            <td><button type="button" value="' + list.id + '" class="btn btn-secondary btn-sm edit_about">Edit</button></td>\
-                            <td><button type="button" value="' + list.id + '" class="btn btn-sm btn-danger delete_about">Delete</button></td>\
-                        </tr>');
+                                    <td>' + list.id + '</td>\
+                                    <td>' + list.title + '</td>\
+                                    <td><img src="{{ asset('uploads/abouts/') }}/' + list.image + '" width="70px" height="70px" alt="Image"></td>\
+                                    <td>' + list.description + '</td>\
+                                    <td><button type="button" value="' + list.id + '" class="btn btn-secondary btn-sm edit_about">Edit</button></td>\
+                                    <td><button type="button" value="' + list.id + '" class="btn btn-sm btn-danger delete_about">Delete</button></td>\
+                                </tr>');
                             });
                         }
                     });
@@ -220,8 +243,8 @@
                 });
 
                 $(document).on('click', '.add_about', function(e) {
+                
                     e.preventDefault();
-
                     let form_data = new FormData();
                     form_data.append('title', $('#title').val());
                     form_data.append('image', $('#image')[0].files[0]);
