@@ -67,7 +67,6 @@ class BlogController extends Controller
 
         $blog->update();
         return redirect(route('blog'))->with('status', 'Blog has update successfully');
-
     }
 
     public function delete($id)
@@ -80,7 +79,6 @@ class BlogController extends Controller
         }
         $blog->delete();
         return redirect()->back()->with('status', 'blog has update successfully');
-
     }
 
 }

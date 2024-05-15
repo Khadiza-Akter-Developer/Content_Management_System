@@ -16,10 +16,10 @@ class AboutController extends Controller
         return view('about.index', compact('about'));
     }
 
-    // public function create()
-    // {
-    //     return view('about.create');
-    // }
+    public function create()
+    {
+        return view('about.create');
+    }
 
     public function fetch()
     {
