@@ -1,7 +1,7 @@
 @extends('layout.auth')
 @section('content')
     {{-- Modal --}}
-    <div class="modal" id="BlogModal" aria-labelledby="AddBlogModalLabel" aria-hidden="true">
+    <div class="modal" id="BlogModal" aria-labelledby="BlogModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -29,8 +29,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-gradient-dark btn-sm" id="save_blog">Save</button>
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="edit_blog"
-                        style="display: none">Update</button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="edit_blog">Update</button>
                     <button type="button" class="btn btn-gradient-dark btn-sm" id="delete_blog">Delete</button>
                     <button type="button" class="btn btn-gradient-dark btn-sm" id="cancel_blog">Cancel</button>
                 </div>
