@@ -27,9 +27,9 @@ Route::get('slider-delete/{id}',[SliderController::class, 'delete']);
 Route::get('blog', [BlogController::class, 'index'])->name('blog');
 Route::get('blog-add',[BlogController::class, 'create'])->name('blog.create');
 Route::post('blog-store', [BlogController::class,'store'])->name('blog.store');
-Route::get('blog-edit/{id}',[BlogController::class, 'edit']);
-Route::post('blog-update/{id}', [BlogController::class, 'update']);
-Route::get('blog-delete/{id}',[BlogController::class, 'delete']);
+Route::get('blog-edit/{id}',[BlogController::class, 'edit'])->name('blog.edit');
+Route::post('blog-update/{id}', [BlogController::class, 'update'])->name('blog.update');
+Route::get('blog-delete/{id}',[BlogController::class, 'delete'])->name('blog.delete');
 
 //about route
 Route::get('about', [AboutController::class, 'index'])->name('about');

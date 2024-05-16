@@ -28,10 +28,14 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="save_blog">Save</button>
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="edit_blog">Update</button>
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="delete_blog">Delete</button>
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="cancel_blog">Cancel</button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="save_blog"
+                        OnSubmitModal= 'save'>Save</button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="edit_blog"
+                        OnSubmitModal= 'update'>Update</button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="delete_blog"
+                        OnSubmitModal= 'delete'>Delete</button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="cancel_blog"
+                        OnSubmitModal= 'cancel'>Cancel</button>
                 </div>
             </div>
         </div>
@@ -94,10 +98,41 @@
 
 @section('scripts')
     <script>
-        $(document).on('click', '.add_blog', function(e) {
-            e.preventDefault();
-            $('#AddBlogModalLabel').text('Add Blog Data');
-            
+        var Submit_url = '';
+
+        function OnSubmitModal(action) {
+            const formData = new FormData();
+            formData.append('title', $('#title').val());
+            formData.append('image', $('#image')[0].files[0]);
+            formData.append('description', $('#description').val());
+        }
+
+        if (action == 'save') {
+            Submit_url = "{{ route('blog.store') }}",
+        }
+        elseif(action == 'update') {
+            Submit_url = "{{ route('blog.update') }}"+'{id}';
+        }
+        elseif(action == 'delete') {
+            Submit_url = "{{ route('blog.delete') }}"+val();
+        }
+
+        $.ajax({
+            url: 'Submit_url',
+            type: '',
+            data: formData
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function(response) {
+
+            }
+
+            $(document).on('click', '.save_blog' , function(e){
+                e.preventDefault();
+                $('#BlogModalLabel').text('Add Blog Data');
+                $('#')
+            })
         });
     </script>
 @endsection
