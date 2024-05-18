@@ -9,7 +9,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    @csrf
+                    <input type="hidden" id="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" id="blog_id">
                     <div class="form-body">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" id="title" required class="form-control" placeholder="enter title"
@@ -28,20 +29,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="save_blog"
-                        OnSubmitModal= 'save'>Save</button>
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="edit_blog"
-                        OnSubmitModal= 'update'>Update</button>
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="delete_blog"
-                        OnSubmitModal= 'delete'>Delete</button>
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="cancel_blog"
-                        OnSubmitModal= 'cancel'>Cancel</button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="action_button"></button>
                 </div>
             </div>
         </div>
     </div>
     {{-- End Modal --}}
-
 
     <div class="main-panel">
         <div class="content-wrapper">
@@ -56,7 +49,6 @@
                 <div class="col-lg-14 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -76,63 +68,122 @@
                                             <td><img src="{{ asset('uploads/blogs/' . $it->image) }}" width="70px"
                                                     height="70px" alt="Image"></td>
                                             <td>{{ $it->description }}</td>
-                                            <td><a href="{{ url('blog-edit/' . $it->id) }}"
-                                                    class="btn btn-sm btn-secondary">Edit</a></td>
-                                            <td><a href="{{ url('blog-delete/' . $it->id) }}"
-                                                    class="btn btn-sm bg-danger">Delete</a></td>
+                                            <td><button class="btn btn-sm btn-secondary edit_blog"
+                                                    data-id="{{ $it->id }}">Edit</button></td>
+                                            <td><button class="btn btn-sm bg-danger delete_blog"
+                                                    data-id="{{ $it->id }}">Delete</button></td>
                                         </tr>
                                     @endforeach
-                                </tbody>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                {{ $blog->links() }}
+                <div class="row">
+                    {{ $blog->links() }}
+                </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection
 
-@section('scripts')
-    <script>
-        var Submit_url = '';
+    @section('scripts')
+        <script>
+            var Recent_Action = '';
 
-        function OnSubmitModal(action) {
-            const formData = new FormData();
-            formData.append('title', $('#title').val());
-            formData.append('image', $('#image')[0].files[0]);
-            formData.append('description', $('#description').val());
-        }
+            function OnSubmitModal() {
+                const formData = new FormData();
+                formData.append('title', $('#title').val());
+                if ($('#image')[0].files[0]) {
+                    formData.append('image', $('#image')[0].files[0]);
+                }
+                formData.append('description', $('#description').val());
+                formData.append('_token', $('#csrf_token').val());
 
-        if (action == 'save') {
-            Submit_url = "{{ route('blog.store') }}",
-        }
-        elseif(action == 'update') {
-            Submit_url = "{{ route('blog.update') }}"+'{id}';
-        }
-        elseif(action == 'delete') {
-            Submit_url = "{{ route('blog.delete') }}"+val();
-        }
+                var Submit_url = '';
+                var method = '';
 
-        $.ajax({
-            url: 'Submit_url',
-            type: '',
-            data: formData
-            contentType: false,
-            processData: false,
-            dataType: 'json',
-            success: function(response) {
+                if (Recent_Action === 'save') {
+                    Submit_url = "{{ route('blog.store') }}";
+                    method = 'POST';
+                } else if (Recent_Action === 'update') {
+                    Submit_url = "{{ route('blog.update') }}";
+                    method = 'POST';
+                    formData.append('_method', 'PUT');
+                    formData.append('id', $('#blog_id').val());
+                }
 
+                $.ajax({
+                    url: Submit_url,
+                    type: method,
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(response) {
+                        location.reload();
+                    },
+                    error: function(response) {
+                        
+                    }
+                });
             }
 
-            $(document).on('click', '.save_blog' , function(e){
-                e.preventDefault();
-                $('#BlogModalLabel').text('Add Blog Data');
-                $('#')
-            })
-        });
-    </script>
-@endsection
+            $(document).ready(function() {
+                $('#add_blog').click(function(e) {
+                    e.preventDefault();
+                    Recent_Action = 'save';
+                    $('#BlogModalLabel').text('Add Blog Data');
+                    $('#action_button').text('Save');
+                    $('#blog_id').val('');
+                    $('#title').val('');
+                    $('#image').val('');
+                    $('#description').val('');
+                    $('#BlogModal').modal('show');
+                });
+
+                $('.edit_blog').click(function(e) {
+                    e.preventDefault();
+                    Recent_Action = 'update';
+                    $('#BlogModalLabel').text('Edit Blog Data');
+                    $('#action_button').text('Update');
+                    const blog_id = $(this).data('id');
+
+                    $.ajax({
+                        url: "{{ route('blog.edit') }}",
+                        type: 'GET',
+                        data: {
+                            id: blog_id
+                        },
+                        success: function(response) {
+                            $('#blog_id').val(response.id);
+                            $('#title').val(response.title);
+                            $('#description').val(response.description);
+                            $('#BlogModal').modal('show');
+                        }
+                    });
+                });
+
+                $('#action_button').click(function() {
+                    OnSubmitModal();
+                });
+
+                $('.delete_blog').click(function(e) {
+                    e.preventDefault();
+                    const blog_id = $(this).data('id');
+                    if (confirm('Are you sure you want to delete this blog?')) {
+                        $.ajax({
+                            url: "{{ route('blog.delete') }}",
+                            type: 'DELETE',
+                            data: {
+                                id: blog_id,
+                                _token: $('#csrf_token').val()
+                            },
+                            success: function(response) {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    @endsection

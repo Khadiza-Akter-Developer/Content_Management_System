@@ -277,3 +277,166 @@
             });
         </script>
     @endsection
+
+
+
+
+
+    {{-- jdf --}}
+
+    @extends('layout.auth')
+@section('content')
+    {{-- Modal --}}
+    <div class="modal" id="BlogModal" aria-labelledby="BlogModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="BlogModalLabel">Add Blog Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @csrf
+                    <div class="form-body">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" id="title" required class="form-control" placeholder="enter title" name="title">
+                    </div>
+
+                    <div class="form-body">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" id="image" class="form-control" placeholder="Image" name="image">
+                    </div>
+
+                    <div class="form-body">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" id="description" required class="form-control" placeholder="enter description"
+                            name="description">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="modal_action_button"></button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="cancel_blog" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal --}}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">List of Blog </h3>
+                <div class="d-flex justify-content-end mb-3">
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="add_blog">Add Blog</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-14 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th> ID </th>
+                                        <th> Title </th>
+                                        <th> Image </th>
+                                        <th> Description </th>
+                                        <th> Edit </th>
+                                        <th> Delete </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($blog as $it)
+                                        <tr>
+                                            <td>{{ $it->id }}</td>
+                                            <td>{{ $it->title }}</td>
+                                            <td><img src="{{ asset('uploads/blogs/' . $it->image) }}" width="70px" height="70px" alt="Image"></td>
+                                            <td>{{ $it->description }}</td>
+                                            <td><a href="#" class="btn btn-sm btn-secondary edit_blog" data-id="{{ $it->id }}">Edit</a></td>
+                                            <td><a href="#" class="btn btn-sm bg-danger delete_blog" data-id="{{ $it->id }}">Delete</a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {{ $blog->links() }}
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+    <script>
+        let currentAction = ''; // Declare a variable to track the current action
+
+        function OnSubmitModal() {
+            const formData = new FormData();
+            formData.append('title', $('#title').val());
+            formData.append('image', $('#image')[0].files[0]);
+            formData.append('description', $('#description').val());
+
+            let submitUrl = '';
+            if (currentAction === 'save') {
+                submitUrl = "{{ route('blog.store') }}";
+            } else if (currentAction === 'update') {
+                submitUrl = "{{ route('blog.update') }}";
+            } else if (currentAction === 'delete') {
+                submitUrl = "{{ route('blog.delete') }}";
+            }
+
+            $.ajax({
+                url: submitUrl,
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                success: function(response) {
+                
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            $('#add_blog').on('click', function() {
+                currentAction = 'save';
+                $('#BlogModalLabel').text('Add Blog Data');
+                $('#modal_action_button').text('Save').off('click').on('click', OnSubmitModal);
+                $('#title').val('');
+                $('#image').val('');
+                $('#description').val('');
+                $('#BlogModal').modal('show');
+            });
+
+            $('.edit_blog').on('click', function() {
+                currentAction = 'update';
+                const id = $(this).data('id');
+                // Fetch and populate the form with existing data
+                $.get("{{ url('blog') }}/" + id, function(data) {
+                    $('#title').val(data.title);
+                    $('#description').val(data.description);
+                    // Note: Image handling might be different depending on your requirements
+                });
+                $('#BlogModalLabel').text('Edit Blog Data');
+                $('#modal_action_button').text('Update').off('click').on('click', function() {
+                    OnSubmitModal(id);
+                });
+                $('#BlogModal').modal('show');
+            });
+
+            $('.delete_blog').on('click', function() {
+                currentAction = 'delete';
+                const id = $(this).data('id');
+                $('#BlogModalLabel').text('Delete Blog Data');
+                $('#modal_action_button').text('Delete').off('click').on('click', function() {
+                    OnSubmitModal(id);
+                });
+                $('#BlogModal').modal('show');
+            });
+        });
+    </script>
+@endsection
