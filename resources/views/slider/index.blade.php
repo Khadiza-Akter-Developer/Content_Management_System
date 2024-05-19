@@ -1,5 +1,8 @@
 @extends('layout.auth')
 @section('content')
+    {{-- Toastr CSS --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     {{-- Modal --}}
     <div class="modal" id="SliderModal" aria-labelledby="SliderModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -13,8 +16,7 @@
                     <input type="hidden" id="slider_id">
                     <div class="form-body">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" id="title" required class="form-control" placeholder="Enter title"
-                            name="title">
+                        <input type="text" id="title" required class="form-control" placeholder="Enter title" name="title">
                     </div>
 
                     <div class="form-body">
@@ -24,8 +26,7 @@
 
                     <div class="form-body">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" required class="form-control" placeholder="Enter description"
-                            name="description">
+                        <input type="text" id="description" required class="form-control" placeholder="Enter description" name="description">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -65,128 +66,143 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td><img src="{{ asset('uploads/sliders/' . $item->image) }}" width="70px"
-                                                    height="70px" alt="Image"></td>
+                                            <td><img src="{{ asset('uploads/sliders/' . $item->image) }}" width="70px" height="70px" alt="Image"></td>
                                             <td>{{ $item->description }}</td>
-                                            <td><button class="btn btn-sm btn-secondary edit_slider"
-                                                    data-id="{{ $item->id }}">Edit</button></td>
-                                            <td><button class="btn btn-sm bg-danger delete_slider"
-                                                    data-id="{{ $item->id }}">Delete</button></td>
+                                            <td><button class="btn btn-sm btn-secondary edit_slider" data-id="{{ $item->id }}">Edit</button></td>
+                                            <td><button class="btn btn-sm bg-danger delete_slider" data-id="{{ $item->id }}">Delete</button></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
                 <div class="row">
                     {{ $slider->links() }}
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('scripts')
-        <script>
-            var Recent_Action = '';
+@section('scripts')
+    {{-- Toastr JS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-            function OnSubmitModal() {
-                const formData = new FormData();
-                formData.append('title', $('#title').val());
-                if ($('#image')[0].files[0]) {
-                    formData.append('image', $('#image')[0].files[0]);
-                }
-                formData.append('description', $('#description').val());
-                formData.append('_token', $('#csrf_token').val());
+    <script>
+        var Recent_Action = '';
 
-                var Submit_url = '';
-                var method = '';
+        function OnSubmitModal() {
+            const formData = new FormData();
+            formData.append('title', $('#title').val());
+            if ($('#image')[0].files[0]) {
+                formData.append('image', $('#image')[0].files[0]);
+            }
+            formData.append('description', $('#description').val());
+            formData.append('_token', $('#csrf_token').val());
 
-                if (Recent_Action === 'save') {
-                    Submit_url = "{{ route('slider.store') }}";
-                    method = 'POST';
-                } else if (Recent_Action === 'update') {
-                    Submit_url = "{{ route('slider.update') }}";
-                    method = 'POST';
-                    formData.append('_method', 'PUT');
-                    formData.append('id', $('#slider_id').val());
-                }
+            var Submit_url = '';
+            var method = '';
 
-
-                $.ajax({
-                    url: Submit_url,
-                    type: method,
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'json',
-                    success: function(response) {
-                        location.reload();
-                    },
-                    error: function(response) {
-
-                    }
-                });
+            if (Recent_Action === 'save') {
+                Submit_url = "{{ route('slider.store') }}";
+                method = 'POST';
+            } else if (Recent_Action === 'update') {
+                Submit_url = "{{ route('slider.update') }}";
+                method = 'POST';
+                formData.append('_method', 'PUT');
+                formData.append('id', $('#slider_id').val());
             }
 
-            $(document).ready(function() {
-                $('#add_slider').click(function(e) {
-                    e.preventDefault();
-                    Recent_Action = 'save';
-                    $('#SliderModalLabel').text('Add Slider Data');
-                    $('#action_button').text('Save');
-                    $('#slider_id').val('');
-                    $('#title').val('');
-                    $('#image').val('');
-                    $('#description').val('');
-                    $('#SliderModal').modal('show');
-                });
+            $.ajax({
+                url: Submit_url,
+                type: method,
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        toastr.success(response.message);
+                    } else {
+                        toastr.error(response.message);
+                    }
+                    $('#SliderModal').modal('hide');
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                },
+                error: function(response) {
+                    toastr.error('An error occurred. Please try again.');
+                }
+            });
+        }
 
+        $(document).ready(function() {
+            $('#add_slider').click(function(e) {
+                e.preventDefault();
+                Recent_Action = 'save';
+                $('#SliderModalLabel').text('Add Slider Data');
+                $('#action_button').text('Save');
+                $('#slider_id').val('');
+                $('#title').val('');
+                $('#image').val('');
+                $('#description').val('');
+                $('#SliderModal').modal('show');
+            });
 
-                $('.edit_slider').click(function(e) {
-                    e.preventDefault();
-                    Recent_Action = 'update';
-                    $('#SliderModalLabel').text('Update Slider Data');
-                    $('#action_button').text('Update');
-                    const slider_id = $(this).data('id');
+            $('.edit_slider').click(function(e) {
+                e.preventDefault();
+                Recent_Action = 'update';
+                $('#SliderModalLabel').text('Update Slider Data');
+                $('#action_button').text('Update');
+                const slider_id = $(this).data('id');
 
-                    $.ajax({
-                        url: "{{ route('slider.edit') }}",
-                        type: 'GET',
-                        data: {
-                            id: slider_id
-                        },
-                        success: function(response) {
-                            $('#slider_id').val(response.id);
-                            $('#title').val(response.title);
-                            $('#description').val(response.description);
-                            $('#SliderModal').modal('show');
-                        }
-                    });
-
-                });
-
-                $('#action_button').click(function() {
-                    OnSubmitModal();
-                });
-
-                $('.delete_slider').click(function(e) {
-                    e.preventDefault();
-                    const slider_id = $(this).data('id');
-                    if (confirm('Are you sure you want to delete this slider?')) {
-                        $.ajax({
-                            url: "{{ route('slider.delete') }}",
-                            type: 'DELETE',
-                            data: {
-                                id: slider_id,
-                                _token: $('#csrf_token').val()
-                            },
-                            success: function(response) {
-                                location.reload();
-                            }
-                        });
+                $.ajax({
+                    url: "{{ route('slider.edit') }}",
+                    type: 'GET',
+                    data: {
+                        id: slider_id
+                    },
+                    success: function(response) {
+                        $('#slider_id').val(response.id);
+                        $('#title').val(response.title);
+                        $('#description').val(response.description);
+                        $('#SliderModal').modal('show');
                     }
                 });
             });
-        </script>
-    @endsection
+
+            $('#action_button').click(function() {
+                OnSubmitModal();
+            });
+
+            $('.delete_slider').click(function(e) {
+                e.preventDefault();
+                const slider_id = $(this).data('id');
+                if (confirm('Are you sure you want to delete this slider?')) {
+                    $.ajax({
+                        url: "{{ route('slider.delete') }}",
+                        type: 'DELETE',
+                        data: {
+                            id: slider_id,
+                            _token: $('#csrf_token').val()
+                        },
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                toastr.success(response.message);
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 2000);
+                            } else {
+                                toastr.error(response.message);
+                            }
+                        },
+                        error: function(response) {
+                            toastr.error('An error occurred. Please try again.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+@endsection
