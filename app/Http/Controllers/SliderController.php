@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use  App\Models\Slider;
 
+use  App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 

@@ -142,7 +142,7 @@
                     $('#SliderModal').modal('show');
                 });
 
-                
+
                 $('.edit_slider').click(function(e) {
                     e.preventDefault();
                     Recent_Action = 'update';
