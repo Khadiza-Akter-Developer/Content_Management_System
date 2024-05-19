@@ -371,7 +371,7 @@
 
 @section('scripts')
     <script>
-        let currentAction = ''; // Declare a variable to track the current action
+        let currentAction = ''; 
 
         function OnSubmitModal() {
             const formData = new FormData();
@@ -415,11 +415,9 @@
             $('.edit_blog').on('click', function() {
                 currentAction = 'update';
                 const id = $(this).data('id');
-                // Fetch and populate the form with existing data
                 $.get("{{ url('blog') }}/" + id, function(data) {
                     $('#title').val(data.title);
                     $('#description').val(data.description);
-                    // Note: Image handling might be different depending on your requirements
                 });
                 $('#BlogModalLabel').text('Edit Blog Data');
                 $('#modal_action_button').text('Update').off('click').on('click', function() {
