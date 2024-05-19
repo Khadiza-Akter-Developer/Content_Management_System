@@ -16,11 +16,10 @@ Route::get('/', function () {
 
 //slider route curd
 Route::get('slider', [SliderController::class, 'index'])->name('sliders');
-Route::get('slider-add',[SliderController::class, 'create'])->name('slider.create');
 Route::post('slider-store', [SliderController::class,'store'])->name('slider.store');
-Route::get('slider-edit/{id}',[SliderController::class, 'edit']);
-Route::post('slider-update/{id}', [SliderController::class, 'update']);
-Route::get('slider-delete/{id}',[SliderController::class, 'delete']);
+Route::get('slider-edit',[SliderController::class, 'edit'])->name('slider.edit');
+Route::put('slider-update', [SliderController::class, 'update'])->name('slider.update');
+Route::delete('about-delete', [AboutController::class, 'delete'])->name('about.delete');
 
 
 //blog route
@@ -32,12 +31,10 @@ Route::delete('blog-delete', [BlogController::class, 'delete'])->name('blog.dele
 
 //about route
 Route::get('about', [AboutController::class, 'index'])->name('about');
-Route::get('about-add',[AboutController::class, 'create'])->name('about.create');
-Route::get('fetch_about', [AboutController::class,'fetch']);
 Route::post('about-store', [AboutController::class,'store'])->name('about.store');
-Route::get('about-edit/{id}', [AboutController::class, 'edit'])->name('about.edit');
-Route::post('about-update/{id}', [AboutController::class, 'update'])->name('about.update');
-Route::get('about-delete/{id}',[AboutController::class, 'delete']);
+Route::get('about-edit', [AboutController::class, 'edit'])->name('about.edit');
+Route::put('about-update', [AboutController::class, 'update'])->name('about.update');
+Route::get('about-delete',[AboutController::class, 'delete'])->name('about.delete');
 
 
 

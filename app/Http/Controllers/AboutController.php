@@ -3,148 +3,72 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use PhpParser\Node\Stmt\Return_;
 
 class AboutController extends Controller
 {
     public function index()
     {
-        $about = About::simplePaginate(5);
+        $about = About::cursorPaginate(5);
         return view('about.index', compact('about'));
     }
 
-    public function create()
-    {
-        return view('about.create');
-    }
-
-    public function fetch()
-    {
-        $about = About::all();
-        return response()->json([
-            'abouts' => $about,
-        ]);
-    }
-
-
     public function store(Request $request)
     {
-        // Validate the incoming request data
-        $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'description' => 'required'
-        ]);
+        $about = new About();
+        $about->title = $request['title'];
 
-        // If validation fails, return the error messages
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 400,
-                'errors' => $validator->errors()->all()
-            ]);
-        } else {
-            // If validation passes, proceed with storing the data
-            $about = new About();
-            $about->title = $request->input('title');
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
             $file->move('uploads/abouts/', $filename);
             $about->image = $filename;
-            $about->description = $request->input('description');
-            $about->save();
-
-            // Return a success message
-            return response()->json([
-                'status' => 200,
-                'message' => 'About added successfully.'
-            ]);
         }
+        $about->description = $request['description'];
+        $about->save();
+
+        return response()->json(['status' => 'success', 'message' => 'About added successfully']);
     }
 
-
-    //Edit and Update data--------------------------------------------------
-
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $about = About::find($id);
-        if ($about) {
-            $type ='edit';
-            return response()->json([
-                'status' => 200,
-                'type' => $type,
-                'about' => $about,
-            ]);
-        } else {
-            return response()->json([
-                'status' => 404,
-                'message' => "About not found",
-            ]);
-        }
+        $about = About::find($request->id);
+        return response()->json($about);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'title' => 'required|max:191',
-                'description' => 'required',
-                'edit_image' => 'nullable|mimes:jpg,png,jpeg|max:2048'
-            ]
-        );
+        $about = About::find($request->id);
+        $about->title = $request['title'];
 
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 400,
-                'errors' => $validator->errors()->all(),
-            ]);
-        } else {
-            $about = About::find($id);
-            if ($about) {
-                $about->title = $request->input('title');
-                $about->description = $request->input('description');
-
-                if ($request->hasFile('edit_image')) {
-                    $file = $request->file('edit_image');
-                    $filename = time() . '.' . $file->getClientOriginalExtension();
-                    $file->move('uploads/abouts/', $filename);
-                    $about->image = $filename;
-                }
-                $about->save();
-
-                return response()->json([
-                    'status' => 200,
-                    'message' => 'About Updated Successfully.',
-                ]);
-            } else {
-                return response()->json([
-                    'status' => 404,
-                    'message' => 'About Not Found',
-                ]);
+        if ($request->hasFile('image')) {
+            $destination = 'uploads/abouts/' . $about->image;
+            if (File::exists($destination)) {
+                File::delete($destination);
             }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/abouts/', $filename);
+            $about->image = $filename;
         }
+        $about->description = $request['description'];
+        $about->save();
+
+        return response()->json(['status' => 'success', 'message' => 'About updated successfully']);
     }
 
-    //Delete data
-
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $about = About::find($id);
-
-        if (!$about) {
-            return redirect()->back()->with('error', 'About not found');
-        }
-
+        $about = About::find($request->id);
         $destination = 'uploads/abouts/' . $about->image;
         if (File::exists($destination)) {
             File::delete($destination);
         }
-
         $about->delete();
 
-        return redirect()->back()->with('status', 'About has been deleted successfully');
+        return response()->json(['status' => 'success', 'message' => 'About deleted successfully']);
     }
 }

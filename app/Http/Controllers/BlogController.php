@@ -18,7 +18,8 @@ class BlogController extends Controller
         $blog = new Blog;
         $blog->title = $request['title'];
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) 
+        {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;

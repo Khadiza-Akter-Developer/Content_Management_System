@@ -14,19 +14,13 @@ class SliderController extends Controller
         return view('slider.index', compact('slider'));
     }
 
-    public function create()
-    {
-
-        return view('slider.create');
-        
-    }
 
     public function store(Request $request)
     {
         $slider = new Slider;
         $slider->title = $request['title'];
 
-        if($request->hasFile(['image']))
+        if($request->hasFile('image'))
         {
             $file = $request->file('image');
             $extention = $file->getClientOriginalExtension();
@@ -37,21 +31,21 @@ class SliderController extends Controller
         $slider->description = $request['description'];
 
         $slider->save();
-        return redirect(route('sliders'))->with('status', 'Slider has added successfully');
+        return response()->json(['status' => 'success', 'message' => 'Slider added successfully']);
     }
 
     public function edit($id)
     {
         $slider = Slider::find($id);
-        return view('slider.edit', compact('slider'));
+        return response()->json($slider);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
   
     {        
-        $slider = Slider::find($id);
+        $slider = Slider::find($request->id);
         $slider->title = $request['title'];
-        if($request->hasFile(['image']))
+        if($request->hasFile('image'))
         {
             $destination = 'uploads/sliders/'.$slider->image;
             if(File::exists($destination)){
@@ -65,8 +59,8 @@ class SliderController extends Controller
         }
         $slider->description = $request['description'];
 
-        $slider->update();
-        return redirect(route('sliders'))->with('status', 'Slider has update successfully');
+        $slider->save();
+        return response()->json(['status' => 'success', 'message' => 'Slider updated successfully']);
 
     }
 
