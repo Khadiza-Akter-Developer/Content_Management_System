@@ -19,7 +19,7 @@ Route::get('slider', [SliderController::class, 'index'])->name('sliders');
 Route::post('slider-store', [SliderController::class,'store'])->name('slider.store');
 Route::get('slider-edit',[SliderController::class, 'edit'])->name('slider.edit');
 Route::put('slider-update', [SliderController::class, 'update'])->name('slider.update');
-Route::delete('about-delete', [AboutController::class, 'delete'])->name('about.delete');
+Route::delete('slider-delete', [SliderController::class, 'delete'])->name('slider.delete');
 
 
 //blog route

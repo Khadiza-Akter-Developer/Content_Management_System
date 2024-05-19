@@ -27,7 +27,6 @@
                         <input type="text" id="description" required class="form-control" placeholder="Enter description"
                             name="description">
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-gradient-dark btn-sm" id="action_button"></button>
@@ -35,14 +34,12 @@
             </div>
         </div>
     </div>
-
     {{-- End Modal --}}
-
 
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="page-header">
-                <h3 class="page-title">List of Slider </h3>
+                <h3 class="page-title">List of Slider</h3>
                 <div class="d-flex justify-content-end mb-3">
                     <button type="button" class="btn btn-gradient-dark btn-sm" id="add_slider">Add Slider</button>
                 </div>
@@ -86,89 +83,110 @@
                     {{ $slider->links() }}
                 </div>
             </div>
-        @endsection
+        </div>
+    @endsection
 
-        @section('scripts')
-            <script>
-                var recent_Action = '';
+    @section('scripts')
+        <script>
+            var Recent_Action = '';
 
-                function OnSubmitModal() {
-                    const formData = new FormData();
-                    formData.append('title', $('#title').val());
-                    if ($('#image')[0].files[0]) {
-                        formData.append('image', $('#image')[0].files[0]);
-                    }
-                    formData.append('description', $('#description').val());
-                    formData.append('_token', $('#csrf_token').val());
+            function OnSubmitModal() {
+                const formData = new FormData();
+                formData.append('title', $('#title').val());
+                if ($('#image')[0].files[0]) {
+                    formData.append('image', $('#image')[0].files[0]);
+                }
+                formData.append('description', $('#description').val());
+                formData.append('_token', $('#csrf_token').val());
 
-                    var submit_url = '';
-                    var method = '';
+                var Submit_url = '';
+                var method = '';
 
-                    if (recent_Action === 'save') {
-                        submit_url = "{{ route('slider.store') }}";
-                        method = 'POST';
-                    } else if (recent_Action === 'update') {
-                        submit_url = "{{ route('slider.update') }}";
-                        method = "POST";
-                        formData.append('_method', 'PUT');
-                        formData.append('id', $('#slider_id').val());
-                    }
-
-                    $.ajax({
-                        url: submit_url,
-                        type: method,
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        dataType: 'json',
-                        success: function(response) {
-                            location.reload();
-                        },
-                        error: function(response) {
-
-                        }
-                    });
+                if (Recent_Action === 'save') {
+                    Submit_url = "{{ route('slider.store') }}";
+                    method = 'POST';
+                } else if (Recent_Action === 'update') {
+                    Submit_url = "{{ route('slider.update') }}";
+                    method = 'POST';
+                    formData.append('_method', 'PUT');
+                    formData.append('id', $('#slider_id').val());
                 }
 
-                $(document).ready(function() {
-                    $('#add_slider').click(function(e) {
-                        e.preventDefault();
-                        recent_Action = 'save';
-                        $('#SliderModalLabel').text('Add Slider Data');
-                        $('#action_button').text('Save');
-                        $('#SliderModal').modal('show');
-                        $('#title').val('');
-                        $('#image').val('');
-                        $('#description').val('');
-                    });
 
-                    $('.edit_slider').click(function(e) {
-                        e.preventDefault();
-                        recent_Action = 'update';
-                        $('#SliderModalLabel').text('Edit Slider Data');
-                        $('#action_button').text('Update');
-                        const slider_id = $(this).data('id');
+                $.ajax({
+                    url: Submit_url,
+                    type: method,
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(response) {
+                        location.reload();
+                    },
+                    error: function(response) {
 
-                        $.ajax({
-                            url: "{{ route('slider.edit') }}",
-                            type: 'GET',
-                            data: {
-                                id: slider_id
-                            },
-                            success: function(response) {
-                                $('#slider_id').val(response.id);
-                                $('#title').val(response.title);
-                                $('#description').val(response.description);
-                                $('#SliderModal').modal('show');
+                    }
+                });
+            }
 
-                            }
-                        });
-                    });
+            $(document).ready(function() {
+                $('#add_slider').click(function(e) {
+                    e.preventDefault();
+                    Recent_Action = 'save';
+                    $('#SliderModalLabel').text('Add Slider Data');
+                    $('#action_button').text('Save');
+                    $('#slider_id').val('');
+                    $('#title').val('');
+                    $('#image').val('');
+                    $('#description').val('');
+                    $('#SliderModal').modal('show');
+                });
 
-                    $('#action_button').click(function() {
-                        OnSubmitModal();
+                
+                $('.edit_slider').click(function(e) {
+                    e.preventDefault();
+                    Recent_Action = 'update';
+                    $('#SliderModalLabel').text('Update Slider Data');
+                    $('#action_button').text('Update');
+                    const slider_id = $(this).data('id');
+
+                    $.ajax({
+                        url: "{{ route('slider.edit') }}",
+                        type: 'GET',
+                        data: {
+                            id: slider_id
+                        },
+                        success: function(response) {
+                            $('#slider_id').val(response.id);
+                            $('#title').val(response.title);
+                            $('#description').val(response.description);
+                            $('#SliderModal').modal('show');
+                        }
                     });
 
                 });
-            </script>
-        @endsection
+
+                $('#action_button').click(function() {
+                    OnSubmitModal();
+                });
+
+                $('.delete_slider').click(function(e) {
+                    e.preventDefault();
+                    const slider_id = $(this).data('id');
+                    if (confirm('Are you sure you want to delete this slider?')) {
+                        $.ajax({
+                            url: "{{ route('slider.delete') }}",
+                            type: 'DELETE',
+                            data: {
+                                id: slider_id,
+                                _token: $('#csrf_token').val()
+                            },
+                            success: function(response) {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    @endsection
