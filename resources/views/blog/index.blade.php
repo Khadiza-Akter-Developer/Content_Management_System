@@ -120,10 +120,18 @@
                     processData: false,
                     dataType: 'json',
                     success: function(response) {
-                        location.reload();
+                        if (response.status === 'success') {
+                            toastr.success(response.message);
+                        } else {
+                            toastr.error(response.message);
+                        }
+                        $('#BlogModal').modal('hide');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 2000);
                     },
                     error: function(response) {
-
+                        toastr.error('An errror occured. Please try again.')
                     }
                 });
             }
@@ -179,7 +187,17 @@
                                 _token: $('#csrf_token').val()
                             },
                             success: function(response) {
-                                location.reload();
+                                if (response.status === 'success') {
+                                    toastr.success(response.message);
+                                    setTimeout(function() {
+                                    location.reload();
+                                }, 2000);
+                                }else{
+                                    toastr.error(response.message);
+                                }
+                            },
+                            error: function(response){
+                                toastr.error('An error occured. Please try again.')
                             }
                         });
                     }
