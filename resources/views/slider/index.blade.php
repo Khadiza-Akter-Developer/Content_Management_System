@@ -1,6 +1,5 @@
 @extends('layout.auth')
 @section('content')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     {{-- Modal --}}
     <div class="modal" id="SliderModal" aria-labelledby="SliderModalLabel" aria-hidden="true">
@@ -84,7 +83,6 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
         var Recent_Action = '';
