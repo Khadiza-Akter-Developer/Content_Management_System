@@ -131,7 +131,7 @@
                         }, 1000);
                     },
                     error: function(response) {
-                        toastr.error('An errror occured. Please try again.')
+                        toastr.error('An error occurred. Please try again.');
                     }
                 });
             }
@@ -140,7 +140,7 @@
                 $('#add_blog').click(function(e) {
                     e.preventDefault();
                     Recent_Action = 'save';
-                    $('#BlogModalLabel').text('Add Blog Data');
+                    $('#BlogModalLabel').text('Add blog Data');
                     $('#action_button').text('Save');
                     $('#blog_id').val('');
                     $('#title').val('');
@@ -152,7 +152,7 @@
                 $('.edit_blog').click(function(e) {
                     e.preventDefault();
                     Recent_Action = 'update';
-                    $('#BlogModalLabel').text('Edit Blog Data');
+                    $('#BlogModalLabel').text('Update blog Data');
                     $('#action_button').text('Update');
                     const blog_id = $(this).data('id');
 
@@ -172,25 +172,7 @@
                 });
 
                 $('#action_button').click(function() {
-                    if (Recent_Action === 'update') {
-                        Swal.fire({
-                            title: "Do you want to save the changes?",
-                            showDenyButton: true,
-                            showCancelButton: true,
-                            confirmButtonText: "Save",
-                            denyButtonText: `Don't save`
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire("Saved!", "", "success");
-                                OnSubmitModal();
-                            } else if (result.isDenied) {
-                                Swal.fire("Changes are not saved", "", "info");
-                            }
-                        });
-                    } else {
-                        OnSubmitModal();
-
-                    }
+                    OnSubmitModal();
                 });
 
                 $('.delete_blog').click(function(e) {
@@ -212,7 +194,7 @@
                                 type: 'DELETE',
                                 data: {
                                     id: blog_id,
-                                    _token: $('#csrf_token').val()
+                                    _token: '{{ csrf_token() }}'
                                 },
                                 success: function(response) {
                                     if (response.status === 'success') {
@@ -226,9 +208,9 @@
                                 },
                                 error: function(response) {
                                     Swal.fire("Error!",
-                                        'An error occured. Please try again.', "error");
+                                        "An error occurred. Please try again.", "error");
                                 }
-                            })
+                            });
                         }
                     });
                 });
