@@ -34,7 +34,7 @@ Route::get('about', [AboutController::class, 'index'])->name('about');
 Route::post('about-store', [AboutController::class,'store'])->name('about.store');
 Route::get('about-edit', [AboutController::class, 'edit'])->name('about.edit');
 Route::put('about-update', [AboutController::class, 'update'])->name('about.update');
-Route::get('about-delete',[AboutController::class, 'delete'])->name('about.delete');
+Route::delete('about-delete',[AboutController::class, 'delete'])->name('about.delete');
 
 
 

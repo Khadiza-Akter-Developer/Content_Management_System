@@ -112,7 +112,6 @@
                     formData.append('id', $('#about_id').val());
                 }
 
-
                 $.ajax({
                     url: Submit_url,
                     type: method,
@@ -132,7 +131,7 @@
                         }, 1000);
                     },
                     error: function(response) {
-                        toastr.error("An error occured. Please try again.")
+                        toastr.error('An error occurred. Please try again.');
                     }
                 });
             }
@@ -143,13 +142,12 @@
                     Recent_Action = 'save';
                     $('#AboutModalLabel').text('Add About Data');
                     $('#action_button').text('Save');
-                    $('#about_id').val('');
+                    $('#About_id').val('');
                     $('#title').val('');
                     $('#image').val('');
                     $('#description').val('');
                     $('#AboutModal').modal('show');
                 });
-
 
                 $('.edit_about').click(function(e) {
                     e.preventDefault();
@@ -171,7 +169,6 @@
                             $('#AboutModal').modal('show');
                         }
                     });
-
                 });
 
                 $('#action_button').click(function() {
@@ -181,29 +178,41 @@
                 $('.delete_about').click(function(e) {
                     e.preventDefault();
                     const about_id = $(this).data('id');
-                    if (confirm('Are you sure you want to delete this About?')) {
-                        $.ajax({
-                            url: "{{ route('about.delete') }}",
-                            type: 'DELETE',
-                            data: {
-                                id: about_id,
-                                _token: $('#csrf_token').val()
-                            },
-                            success: function(response) {
-                                if (response.status === 'success') {
-                                    toastr.success(response.message);
-                                    setTimeout(function() {
-                                        location.reload();
-                                    }, 2000);
-                                } else {
-                                    toastr.error(response.message);
+
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: "{{ route('about.delete') }}",
+                                type: 'DELETE',
+                                data: {
+                                    id: about_id,
+                                    _token: '{{ csrf_token() }}'
+                                },
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        Swal.fire("Deleted!", response.message, "success");
+                                        setTimeout(function() {
+                                            location.reload();
+                                        }, 1000);
+                                    } else {
+                                        Swal.fire("Error!", response.message, "error");
+                                    }
+                                },
+                                error: function(response) {
+                                    Swal.fire("Error!",
+                                        "An error occurred. Please try again.", "error");
                                 }
-                            },
-                            error: function(response) {
-                                toastr.error('An error occured. Please try again.')
-                            }
-                        });
-                    }
+                            });
+                        }
+                    });
                 });
             });
         </script>
