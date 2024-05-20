@@ -121,17 +121,37 @@
                     dataType: 'json',
                     success: function(response) {
                         if (response.status === 'success') {
-                            toastr.success(response.message);
+                            if (Recent_Action === 'save') {
+                                Swal.fire({
+                                    title: "Good job!",
+                                    text: "About data has been saved successfully.",
+                                    icon: "success"
+                                }).then(() => {
+                                    location.reload();
+                                },1000);
+                            } else if (Recent_Action === 'update') {
+                                Swal.fire({
+                                    title: "Saved!",
+                                    text: "About data has been updated successfully.",
+                                    icon: "success"
+                                }).then(() => {
+                                    location.reload();
+                                });
+                            }
                         } else {
-                            toastr.error(response.message);
+                            Swal.fire({
+                                title: "Error!",
+                                text: response.message || "An error occurred while saving data.",
+                                icon: "error"
+                            });
                         }
-                        $('#AboutModal').modal('hide');
-                        setTimeout(function() {
-                            location.reload();
-                        }, 1000);
                     },
                     error: function(response) {
-                        toastr.error('An error occurred. Please try again.');
+                        Swal.fire({
+                            title: "Error!",
+                            text: "An error occurred while processing the request.",
+                            icon: "error"
+                        });
                     }
                 });
             }
@@ -172,7 +192,23 @@
                 });
 
                 $('#action_button').click(function() {
-                    OnSubmitModal();
+                    if (Recent_Action === 'update') {
+                        Swal.fire({
+                            title: "Do you want to save the changes?",
+                            showDenyButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: "Save",
+                            denyButtonText: `Don't save`
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                OnSubmitModal();
+                            } else if (result.isDenied) {
+                                Swal.fire("Changes are not saved", "", "info");
+                            }
+                        });
+                    } else {
+                        OnSubmitModal();
+                    }
                 });
 
                 $('.delete_about').click(function(e) {
