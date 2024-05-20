@@ -195,12 +195,12 @@
                                     setTimeout(function() {
                                         location.reload();
                                     }, 2000);
-                                }else{
-                                toastr.error(response.message);
-                            }
+                                } else {
+                                    toastr.error(response.message);
+                                }
                             },
-                            error: function(response){
-                                toastr.error("An errror occured. Please try again.")
+                            error: function(response) {
+                                toastr.error('An error occured. Please try again.')
                             }
                         });
                     }
