@@ -128,7 +128,7 @@
                         $('#BlogModal').modal('hide');
                         setTimeout(function() {
                             location.reload();
-                        }, 2000);
+                        }, 1000);
                     },
                     error: function(response) {
                         toastr.error('An errror occured. Please try again.')
@@ -172,7 +172,25 @@
                 });
 
                 $('#action_button').click(function() {
-                    OnSubmitModal();
+                    if (Recent_Action === 'update') {
+                        Swal.fire({
+                            title: "Do you want to save the changes?",
+                            showDenyButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: "Save",
+                            denyButtonText: `Don't save`
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire("Saved!", "", "success");
+                                OnSubmitModal();
+                            } else if (result.isDenied) {
+                                Swal.fire("Changes are not saved", "", "info");
+                            }
+                        });
+                    } else {
+                        OnSubmitModal();
+
+                    }
                 });
 
                 $('.delete_blog').click(function(e) {
