@@ -1,6 +1,5 @@
 @extends('layout.auth')
 @section('content')
-    {{-- Toastr CSS --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     {{-- Modal --}}
@@ -85,7 +84,6 @@
 @endsection
 
 @section('scripts')
-    {{-- Toastr JS --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
