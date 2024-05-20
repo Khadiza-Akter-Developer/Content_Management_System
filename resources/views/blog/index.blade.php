@@ -13,7 +13,7 @@
                     <input type="hidden" id="blog_id">
                     <div class="form-body">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" id="title" required class="form-control" placeholder="enter title"
+                        <input type="text" id="title" required class="form-control" placeholder="Enter title"
                             name="title">
                     </div>
 
@@ -24,12 +24,12 @@
 
                     <div class="form-body">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" required class="form-control" placeholder="enter description"
+                        <input type="text" id="description" required class="form-control" placeholder="Enter description"
                             name="description">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-gradient-dark btn-sm" id="action_button"></button>
+                    <button type="button" class="btn btn-gradient-dark btn-sm" id="action_button">Save</button>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="page-header">
-                <h3 class="page-title">List of Blog </h3>
+                <h3 class="page-title">List of Blog</h3>
                 <div class="d-flex justify-content-end mb-3">
                     <button type="button" class="btn btn-gradient-dark btn-sm" id="add_blog">Add Blog</button>
                 </div>
@@ -52,12 +52,12 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th> ID </th>
-                                        <th> Title </th>
-                                        <th> Image </th>
-                                        <th> Description </th>
-                                        <th> Edit </th>
-                                        <th> Delete </th>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Image</th>
+                                        <th>Description</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -121,17 +121,37 @@
                     dataType: 'json',
                     success: function(response) {
                         if (response.status === 'success') {
-                            toastr.success(response.message);
+                            if (Recent_Action === 'save') {
+                                Swal.fire({
+                                    title: "Good job!",
+                                    text: "Blog data has been saved successfully.",
+                                    icon: "success"
+                                }).then(() => {
+                                    location.reload();
+                                },1000);
+                            } else if (Recent_Action === 'update') {
+                                Swal.fire({
+                                    title: "Saved!",
+                                    text: "Blog data has been updated successfully.",
+                                    icon: "success"
+                                }).then(() => {
+                                    location.reload();
+                                });
+                            }
                         } else {
-                            toastr.error(response.message);
+                            Swal.fire({
+                                title: "Error!",
+                                text: response.message || "An error occurred while saving data.",
+                                icon: "error"
+                            });
                         }
-                        $('#BlogModal').modal('hide');
-                        setTimeout(function() {
-                            location.reload();
-                        }, 1000);
                     },
                     error: function(response) {
-                        toastr.error('An error occurred. Please try again.');
+                        Swal.fire({
+                            title: "Error!",
+                            text: "An error occurred while processing the request.",
+                            icon: "error"
+                        });
                     }
                 });
             }
@@ -140,7 +160,7 @@
                 $('#add_blog').click(function(e) {
                     e.preventDefault();
                     Recent_Action = 'save';
-                    $('#BlogModalLabel').text('Add blog Data');
+                    $('#BlogModalLabel').text('Add Blog Data');
                     $('#action_button').text('Save');
                     $('#blog_id').val('');
                     $('#title').val('');
@@ -152,7 +172,7 @@
                 $('.edit_blog').click(function(e) {
                     e.preventDefault();
                     Recent_Action = 'update';
-                    $('#BlogModalLabel').text('Update blog Data');
+                    $('#BlogModalLabel').text('Edit Blog Data');
                     $('#action_button').text('Update');
                     const blog_id = $(this).data('id');
 
@@ -172,7 +192,23 @@
                 });
 
                 $('#action_button').click(function() {
-                    OnSubmitModal();
+                    if (Recent_Action === 'update') {
+                        Swal.fire({
+                            title: "Do you want to save the changes?",
+                            showDenyButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: "Save",
+                            denyButtonText: `Don't save`
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                OnSubmitModal();
+                            } else if (result.isDenied) {
+                                Swal.fire("Changes are not saved", "", "info");
+                            }
+                        });
+                    } else {
+                        OnSubmitModal();
+                    }
                 });
 
                 $('.delete_blog').click(function(e) {
