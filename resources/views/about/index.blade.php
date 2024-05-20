@@ -121,10 +121,18 @@
                     processData: false,
                     dataType: 'json',
                     success: function(response) {
-                        location.reload();
+                        if (response.status === 'success') {
+                            toastr.success(response.message);
+                        } else {
+                            toastr.error(response.message);
+                        }
+                        $('#AboutModal').modal('hide');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
                     },
                     error: function(response) {
-
+                        toastr.error("An error occured. Please try again.")
                     }
                 });
             }
@@ -142,7 +150,7 @@
                     $('#AboutModal').modal('show');
                 });
 
-                
+
                 $('.edit_about').click(function(e) {
                     e.preventDefault();
                     Recent_Action = 'update';
@@ -182,7 +190,17 @@
                                 _token: $('#csrf_token').val()
                             },
                             success: function(response) {
-                                location.reload();
+                                if (response.status === 'success') {
+                                    toastr.success(response.message);
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 2000);
+                                }else{
+                                toastr.error(response.message);
+                            }
+                            },
+                            error: function(response){
+                                toastr.error("An errror occured. Please try again.")
                             }
                         });
                     }
