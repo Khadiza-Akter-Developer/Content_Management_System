@@ -178,29 +178,41 @@
                 $('.delete_blog').click(function(e) {
                     e.preventDefault();
                     const blog_id = $(this).data('id');
-                    if (confirm('Are you sure you want to delete this blog?')) {
-                        $.ajax({
-                            url: "{{ route('blog.delete') }}",
-                            type: 'DELETE',
-                            data: {
-                                id: blog_id,
-                                _token: $('#csrf_token').val()
-                            },
-                            success: function(response) {
-                                if (response.status === 'success') {
-                                    toastr.success(response.message);
-                                    setTimeout(function() {
-                                    location.reload();
-                                }, 2000);
-                                }else{
-                                    toastr.error(response.message);
+
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: "{{ route('blog.delete') }}",
+                                type: 'DELETE',
+                                data: {
+                                    id: blog_id,
+                                    _token: $('#csrf_token').val()
+                                },
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        Swal.fire("Deleted!", response.message, "success");
+                                        setTimeout(function() {
+                                            location.reload();
+                                        }, 1000);
+                                    } else {
+                                        Swal.fire("Error!", response.message, "error");
+                                    }
+                                },
+                                error: function(response) {
+                                    Swal.fire("Error!",
+                                        'An error occured. Please try again.', "error");
                                 }
-                            },
-                            error: function(response){
-                                toastr.error('An error occured. Please try again.')
-                            }
-                        });
-                    }
+                            })
+                        }
+                    });
                 });
             });
         </script>
