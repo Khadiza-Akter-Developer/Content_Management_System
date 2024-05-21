@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    auth()->logout();
+  //  auth()->logout();
     return 'home';
 });
 
