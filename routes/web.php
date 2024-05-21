@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    auth()->logout();
+    return 'home';
+});
 
 //slider route curd
 Route::get('slider', [SliderController::class, 'index'])->name('sliders');
@@ -37,11 +38,12 @@ Route::put('about-update', [AboutController::class, 'update'])->name('about.upda
 Route::delete('about-delete',[AboutController::class, 'delete'])->name('about.delete');
 
 
-
-
 //website
 Route::get('/', [WebsiteController::class, 'home'])->name('home');
 
-Auth::routes();
 
 Route::get('auth/dashboard',[DashboardController::class, 'dashboard'])->name('auth.dashboard')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
