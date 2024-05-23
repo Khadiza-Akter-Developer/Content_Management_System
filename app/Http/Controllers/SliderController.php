@@ -10,7 +10,7 @@ class SliderController extends Controller
 {
     public function index()
     {
-        $slider = Slider::cursorPaginate(5);
+        $slider = Slider::all();
         return view('slider.index', compact('slider'));
     }
 
