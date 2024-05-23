@@ -41,7 +41,7 @@
         {{-- datatable cdn --}}
 
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
-          
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/js/dataTables.js">           --}}
     </head>
 
 <body>
