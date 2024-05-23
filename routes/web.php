@@ -46,8 +46,4 @@ Route::get('auth/dashboard',[DashboardController::class, 'dashboard'])->name('au
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
