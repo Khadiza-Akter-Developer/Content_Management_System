@@ -37,7 +37,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
+
+        {{-- datatable cdn --}}
+
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
+          
+    </head>
 
 <body>
     <div class="container-scroller">
@@ -312,8 +317,19 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+  
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+
     @yield('scripts')
 
+    {{-- datatable --}}
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+
+    
     <script>
         $(document).ready(function() {
             $('#logout-button').click(function() {
