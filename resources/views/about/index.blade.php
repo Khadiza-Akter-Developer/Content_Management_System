@@ -79,9 +79,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     {{ $about->links() }}
-                </div>
+                </div> --}}
             </div>
         </div>
     @endsection
