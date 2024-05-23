@@ -50,9 +50,9 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img
+                <a class="navbar-brand brand-logo" href="{{ route('auth.dashboard') }}"><img
                         src="{{ asset('assets/auth/images/dashboard/Clogo.png') }}" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                <a class="navbar-brand brand-logo-mini" href="{{ route('auth.dashboard') }}"><img
                         src="{{ asset('assets/auth/images/dashboard/Clogo.png') }}" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
