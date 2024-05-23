@@ -323,11 +323,11 @@
     @yield('scripts')
 
     {{-- datatable --}}
-<script>
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 
     
     <script>
@@ -337,10 +337,6 @@ $(document).ready( function () {
             });
         });
     </script>
-
-
-
-
 </body>
 
 </html>

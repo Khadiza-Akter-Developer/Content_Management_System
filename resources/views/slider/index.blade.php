@@ -49,7 +49,7 @@
                 <div class="col-lg-14 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-striped">
+                            <table id="myTable" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th> ID </th>
@@ -78,9 +78,9 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         {{ $slider->links() }}
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
