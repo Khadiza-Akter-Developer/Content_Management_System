@@ -53,7 +53,7 @@
                 <a class="navbar-brand brand-logo" href="{{ route('auth.dashboard') }}"><img
                         src="{{ asset('assets/auth/images/dashboard/Clogo.png') }}" /></a>
                 <a class="navbar-brand brand-logo-mini" href="{{ route('auth.dashboard') }}"><img
-                        src="{{ asset('assets/auth/images/dashboard/Clogo.png') }}" /></a>
+                        src="{{ asset('assets/auth/images/dashboard/Logo.png') }}" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
