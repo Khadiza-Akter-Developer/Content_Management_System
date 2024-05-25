@@ -231,7 +231,6 @@
                             <div class="nav-profile-image">
                                 {{-- <img src="{{ asset('assets/auth/images/dashboard/LOGO.png') }}" alt="profile"> --}}
                                 <span class="login-status online"></span>
-                                <!--change to offline or busy as needed-->
                             </div>
                             <span class="font-weight-bold mb-2">Content Management System</span>
 
