@@ -110,6 +110,7 @@
                                     <img src="{{ asset('assets/auth/images/faces/face4.jpg') }}" alt="image"
                                         class="profile-pic">
                                 </div>
+                                
                                 <div
                                     class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message
