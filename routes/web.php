@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-  //  auth()->logout();
-    return 'home';
-});
+// Route::get('/', function () {
+//   //  auth()->logout();
+//     return 'home';
+// });
 
 //slider route curd
 Route::get('slider', [SliderController::class, 'index'])->name('sliders');
