@@ -23,23 +23,19 @@
                         <div class="post">
                             <div class="post-thumb">
                                 <a href="blog-single.html">
-                                    <img src="{{$it->  }}" alt="">
+                                    <img src="{{$it->image }}" alt="">
                                 </a>
                             </div>
-                            <h3 class="post-title"><a href="blog-single.html">How To Wear Bright Shoes</a></h3>
+                            <h3 class="post-title"><a href="#">{{ $it->title }}</a></h3>
                             <div class="post-meta">
                                 <ul>
                                     <li>
-                                        <i class="ion-calendar"></i> 20, MAR 2020
+                                        <i class="ion-calendar"></i> {{ date('d M Y', strtotime($it->created_at)) }}
                                     </li>
                                     <li>
                                         <i class="ion-android-people"></i> POSTED BY ADMIN
-                                    </li>
-                                    <li>
-                                        <a href="blog-grid.html"><i class="ion-pricetags"></i> LIFESTYLE</a>,<a
-                                            href="blog-left-sidebar.html"> TRAVEL</a>, <a
-                                            href="blog-right-sidebar.html">FASHION</a>
-                                    </li>
+                                    </li> 
+                                    
 
                                 </ul>
                             </div>

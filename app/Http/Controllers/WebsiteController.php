@@ -10,9 +10,9 @@ class WebsiteController extends Controller
 {
     public function home()
     {
-        $blogs = Blog::all();
+        $blog = Blog::all();
         
-        return view('website.blog.index', compact('blogs'));
+        return view('website.blog.index', compact('blog'));
     }
 }
 
