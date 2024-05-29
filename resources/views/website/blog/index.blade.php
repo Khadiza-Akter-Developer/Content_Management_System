@@ -23,7 +23,8 @@
                         <div class="post">
                             <div class="post-thumb">
                                 <a href="blog-single.html">
-                                    <img src="{{$it->image }}" alt="">
+                                    {{-- <a href="#"> --}}
+                                    <img src="{{URL::asset('public/uploads/blogs'.$it->image) }}">
                                 </a>
                             </div>
                             <h3 class="post-title"><a href="#">{{ $it->title }}</a></h3>
@@ -35,8 +36,6 @@
                                     <li>
                                         <i class="ion-android-people"></i> POSTED BY ADMIN
                                     </li> 
-                                    
-
                                 </ul>
                             </div>
                             <div class="post-content">
