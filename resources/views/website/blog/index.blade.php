@@ -24,7 +24,7 @@
                             <div class="post-thumb">
                                 <a href="blog-single.html">
                                     {{-- <a href="#"> --}}
-                                    <img src="{{URL::asset('public/uploads/blogs'.$it->image) }}">
+                                    <img src="{{URL::asset('uploads/blogs/'.$it->image) }}" >
                                 </a>
                             </div>
                             <h3 class="post-title"><a href="#">{{ $it->title }}</a></h3>
