@@ -39,7 +39,7 @@
                                 </ul>
                             </div>
                             <div class="post-content">
-                                <p>{{ Str::limit($it->description, 100) }} </p>
+                                <p>{{ Str::limit($it->description, 500) }} </p>
                                 <a href="#" class="btn btn-main">Read More</a>
                             </div>
                         </div>
