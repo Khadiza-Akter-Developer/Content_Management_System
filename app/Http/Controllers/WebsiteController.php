@@ -14,5 +14,10 @@ class WebsiteController extends Controller
         
         return view('website.blog.index', compact('blog'));
     }
+
+    public function show(Blog $blog)
+    {
+        return view('website.blog.single', ['blog'=>$blog]);
+    }
 }
 

@@ -41,7 +41,7 @@
                                 <p>
                                 <p>{{ Str::limit($it->description, 500) }} </p>
                                 </p>
-                                <a href="blog-single.html" class="btn btn-main">Continue Reading</a>
+                                <a href="{{ route('blogs.show',$it->id) }}" class="btn btn-main">Continue Reading</a>
                             </div>
 
                         </div>
@@ -144,13 +144,6 @@
                                     </li>
                                 </ul>
                             </div> <!-- End tag  -->
-
-
-
-
-
-
-
                         </aside>
                     </div>
                 </div>

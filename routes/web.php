@@ -46,4 +46,5 @@ Route::get('auth/dashboard',[DashboardController::class, 'dashboard'])->name('au
 
 Auth::routes();
 
+Route::get('/blogs/{Blog}',[WebsiteController::class,'show'])->name('blogs.show');
 
