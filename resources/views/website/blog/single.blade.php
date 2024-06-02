@@ -18,7 +18,7 @@
           <div class="row">
               <div class="col-md-12">
                   <div class="post post-single">
-                      <h2 class="post-title">How To Wear Bright Shoes</h2>
+                      <h2 class="post-title">{{  }}</h2>
                       <div class="post-meta">
                           <ul>
                               <li>
