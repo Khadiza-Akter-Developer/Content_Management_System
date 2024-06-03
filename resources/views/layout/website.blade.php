@@ -158,8 +158,7 @@
                         <ul>
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="contact.html">Contact us</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
+
                         </ul>
                     </div>
                     <p class="copyright mb-0">Copyright
