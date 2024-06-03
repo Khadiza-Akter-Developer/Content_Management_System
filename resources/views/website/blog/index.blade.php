@@ -58,48 +58,26 @@
                             <div class="widget widget-latest-post">
                                 <h4 class="widget-title">Latest Posts</h4>
                                 <div class="media">
+
+                                    @if (count($latestBlogs) > 0)
+                                    @foreach ($blog as $it)
                                     <a class="pull-left" href="blog-single.html">
                                         <img class="media-object"
-                                            src="{{ asset('assets/website/images/blog/post-thumb.jpg') }}" alt="Image">
+                                            src="{{ URL::asset('uploads/blogs/' . $it->image) }}"
+                                            alt="Image">
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="media-heading"><a href="blog-single.html">Introducing Swift for Mac</a>
+                                        <h4 class="media-heading"><a href="blog-single.html">{{ $it->title }}</a>
                                         </h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, officia.</p>
+                                        <p>{{ Str::limit($it->description, 35) }}</p>
                                     </div>
-                                </div>
-                                <div class="media">
-                                    <a class="pull-left" href="blog-single.html">
-                                        <img class="media-object"
-                                            src="{{ asset('assets/website/images/blog/post-thumb-2.jpg') }}" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="blog-single.html">Welcome to Themefisher
-                                                Family</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, officia.</p>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="pull-left" href="blog-single.html">
-                                        <img class="media-object"
-                                            src="{{ asset('assets/website/images/blog/post-thumb-2.jpg') }}" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="blog-single.html">Warm welcome from swift</a>
-                                        </h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, officia.</p>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="pull-left" href="blog-single.html">
-                                        <img class="media-object"
-                                            src="{{ asset('assets/website/images/blog/post-thumb-4.jpg') }}" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="blog-single.html">Introducing Swift for Mac</a>
-                                        </h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, officia.</p>
-                                    </div>
+                                    @endforeach
+                                        
+                                    @else
+                                        <h6 class="text-center text-danger">No post yet</h6>
+                                    @endif
+
+
                                 </div>
                             </div>
                             <!-- End Latest Posts -->
