@@ -164,8 +164,8 @@
                     <p class="copyright mb-0">Copyright
                         <script>
                             document.write(new Date().getFullYear())
-                        </script> &copy;  All rights reserved.
-                      
+                        </script> &copy; All rights reserved.
+
                     </p>
                 </div>
             </div>
