@@ -5,8 +5,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="block">
-                        <h1>Blog Right Sidebar</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, quibusdam.</p>
+                        <h1>All Blogs</h1>
+                        <p>All of the content you require is available here.</p>
                     </div>
                 </div>
             </div>

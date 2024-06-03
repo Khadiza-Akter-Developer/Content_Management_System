@@ -65,8 +65,9 @@
                                         <tr>
                                             <td>{{ $it->id }}</td>
                                             <td>{{ $it->title }}</td>
-                                            <td><img src="{{ asset('uploads/blogs/' . $it->image) }}" style="width:70px; height:70px" alt="image" 
-                                                    height="70px" alt="Image"></td>
+                                            <td><img src="{{ asset('uploads/blogs/' . $it->image) }}"
+                                                    style="width:70px; height:70px" alt="image" height="70px"
+                                                    alt="Image"></td>
                                             <td>{{ $it->description }}</td>
                                             <td><button class="btn btn-sm btn-secondary edit_blog"
                                                     data-id="{{ $it->id }}">Edit</button></td>
@@ -128,7 +129,7 @@
                                     icon: "success"
                                 }).then(() => {
                                     location.reload();
-                                },1000);
+                                }, 1000);
                             } else if (Recent_Action === 'update') {
                                 Swal.fire({
                                     title: "Saved!",

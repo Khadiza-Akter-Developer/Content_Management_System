@@ -14,7 +14,7 @@
     <!-- Basic Page Needs
   ================================================== -->
     <meta charset="utf-8">
-    <title>Airspace | Creative Agency Bootstrap Template</title>
+    <title>Airspace</title>
 
     <!-- Mobile Specific Metas
   ================================================== -->
