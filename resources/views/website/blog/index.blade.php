@@ -21,7 +21,7 @@
                         <div class="post">
                             <div class="post-media post-thumb">
                                 <a href="blog-single.html">
-                                    <img src="{{ URL::asset('uploads/blogs/' . $it->image) }}">
+                                    <img src="{{ URL::asset('uploads/blogs/' . $it->image) }}" style="width: 70%">
                                 </a>
                             </div>
                             <h3 class="post-title"><a href="#">{{ $it->title }}</a></h3>
