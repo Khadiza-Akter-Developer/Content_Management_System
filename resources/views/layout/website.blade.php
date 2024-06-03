@@ -65,7 +65,7 @@
                         <div class="collapse navbar-collapse ml-auto" id="navbarsExample09">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item @@home">
-                                    <a class="nav-link" href="index.html">Home</a>
+                                    <a class="nav-link" href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="nav-item dropdown @@portfolio">
                                     <a class="nav-link dropdown-toggle" href="#" id="dropdown03"
