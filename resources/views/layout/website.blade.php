@@ -158,7 +158,6 @@
                         <ul>
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="contact.html">Contact us</a></li>
-                            <li><a href="service.html">How it works</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                             <li><a href="pricing.html">Pricing</a></li>
                         </ul>
