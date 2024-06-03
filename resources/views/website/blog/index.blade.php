@@ -33,88 +33,49 @@
                                     <li>
                                         <i class="ion-android-people"></i> POSTED BY ADMIN
                                     </li>
-
-
                                 </ul>
                             </div>
                             <div class="post-content">
-                                <p>
-                                <p>{{ Str::limit($it->description, 500) }} </p>
-                                </p>
+                                <p>{{ Str::limit($it->description, 500) }}</p>
                                 <a href="{{ route('blogs.show', $it->id) }}" class="btn btn-main">Continue Reading</a>
                             </div>
-
                         </div>
                     @endforeach
 
                     {{ $blog->links() }}
-
-
                 </div>
+
                 <div class="col-lg-4">
                     <div class="pl-0 pl-xl-4">
                         <aside class="sidebar pt-5 pt-lg-0 mt-5 mt-lg-0">
                             <!-- Widget Latest Posts -->
                             <div class="widget widget-latest-post">
                                 <h4 class="widget-title">Latest Posts</h4>
-                                <div class="media">
-
-                                    @if (count($latestBlogs) > 0)
-                                    @foreach ($blog as $it)
-                                    <a class="pull-left" href="blog-single.html">
-                                        <img class="media-object"
-                                            src="{{ URL::asset('uploads/blogs/' . $it->image) }}"
-                                            alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="blog-single.html">{{ $it->title }}</a>
-                                        </h4>
-                                        <p>{{ Str::limit($it->description, 35) }}</p>
-                                    </div>
+                                
+                                @if (count($latestBlogs) > 0)
+                                    @foreach ($latestBlogs as $latestBlog)
+                                        <div class="media">
+                                            <a class="pull-left" href="blog-single.html">
+                                                <img class="media-object"
+                                                    src="{{ URL::asset('uploads/blogs/' . $latestBlog->image) }}"
+                                                    alt="Image">
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><a
+                                                        href="{{ route('blogs.show', $latestBlog->id) }}">{{ $latestBlog->title }}</a>
+                                                </h4>
+                                                <p>{{ Str::limit($latestBlog->description, 35) }}</p>
+                                            </div>
+                                        </div>
                                     @endforeach
-                                        
-                                    @else
-                                        <h6 class="text-center text-danger">No post yet</h6>
-                                    @endif
-
-
-                                </div>
+                                @else
+                                    <h6 class="text-center text-danger">No post yet</h6>
+                                @endif
                             </div>
                             <!-- End Latest Posts -->
 
-                            <!-- Widget Category -->
-                            <div class="widget widget-category">
-                                <h4 class="widget-title">Categories</h4>
-                                <ul class="widget-category-list">
-                                    <li><a href="blog-grid.html">Animals</a>
-                                    </li>
-                                    <li><a href="blog-grid.html">Landscape</a>
-                                    </li>
-                                    <li><a href="blog-grid.html">Portrait</a>
-                                    </li>
-                                    <li><a href="blog-grid.html">Wild Life</a>
-                                    </li>
-                                    <li><a href="blog-grid.html">Video</a>
-                                    </li>
-                                </ul>
-                            </div> <!-- End category  -->
-
-                            <!-- Widget tag -->
-                            <div class="widget widget-tag">
-                                <h4 class="widget-title">Tag Cloud</h4>
-                                <ul class="widget-tag-list">
-                                    <li><a href="blog-grid.html">Animals</a>
-                                    </li>
-                                    <li><a href="blog-grid.html">Landscape</a>
-                                    </li>
-                                    <li><a href="blog-grid.html">Portrait</a>
-                                    </li>
-                                    <li><a href="blog-grid.html">Wild Life</a>
-                                    </li>
-                                    <li><a href="blog-grid.html">Video</a>
-                                    </li>
-                                </ul>
-                            </div> <!-- End tag  -->
+                            <!-- Other sidebar widgets -->
+                            <!-- ... -->
                         </aside>
                     </div>
                 </div>

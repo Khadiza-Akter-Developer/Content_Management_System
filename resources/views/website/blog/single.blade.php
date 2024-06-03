@@ -32,7 +32,8 @@
                             </ul>
                         </div>
                         <div class="post-thumb">
-                            <img class="img-fluid" src="{{ URL::asset('uploads/blogs/' . $blog->image) }}" alt="">
+                            <img class="img-fluid " src="{{ URL::asset('uploads/blogs/' . $blog->image) }}" alt=""
+                                style="width: 90%; margin: 0 auto;">
                         </div>
                         <div class="post-content post-excerpt">
                             <p>{{ $blog->description }}</p>
