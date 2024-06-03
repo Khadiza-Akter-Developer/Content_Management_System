@@ -38,11 +38,11 @@
         integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        {{-- datatable cdn --}}
+    {{-- datatable cdn --}}
 
-        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
-{{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/js/dataTables.js">           --}}
-    </head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/js/dataTables.js">           --}}
+</head>
 
 <body>
     <div class="container-scroller">
@@ -79,7 +79,7 @@
                                 <span class="availability-status online"></span>
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">Khadiza Akter</p>
+                                <span class="font-weight-bold mb-2">{{ auth()->user()->name }}</span>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -96,11 +96,7 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="mdi mdi-email-outline"></i>
-                            <span class="count-symbol bg-warning"></span>
-                        </a>
+                        
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                             aria-labelledby="messageDropdown">
                             <h6 class="p-3 mb-0">Messages</h6>
@@ -110,7 +106,7 @@
                                     <img src="{{ asset('assets/auth/images/faces/face4.jpg') }}" alt="image"
                                         class="profile-pic">
                                 </div>
-                                
+
                                 <div
                                     class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message
@@ -149,11 +145,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-                            data-bs-toggle="dropdown">
-                            <i class="mdi mdi-bell-outline"></i>
-                            <span class="count-symbol bg-danger"></span>
-                        </a>
+                       
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                             aria-labelledby="notificationDropdown">
                             <h6 class="p-3 mb-0">Notifications</h6>
@@ -313,8 +305,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-  
-<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
 
     @yield('scripts')
 
@@ -325,7 +317,7 @@
         });
     </script>
 
-    
+
     <script>
         $(document).ready(function() {
             $('#logout-button').click(function() {
