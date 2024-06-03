@@ -74,10 +74,10 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="nav-profile-img">
+                            {{-- <div class="nav-profile-img">
                                 <img src="{{ asset('assets/auth/images/Image.jpeg') }}" alt="image">
                                 <span class="availability-status online"></span>
-                            </div>
+                            </div> --}}
                             <div class="nav-profile-text">
                                 <span class="font-weight-bold mb-2">{{ auth()->user()->name }}</span>
                             </div>
