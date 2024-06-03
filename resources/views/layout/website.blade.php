@@ -166,10 +166,8 @@
                     <p class="copyright mb-0">Copyright
                         <script>
                             document.write(new Date().getFullYear())
-                        </script> &copy; Designed & Developed by <a
-                            href="http://www.themefisher.com">Themefisher</a>. All rights reserved.
-                        <br> Get More <a href="https://themefisher.com/free-bootstrap-templates/">Free Bootstrap
-                            Templates</a>
+                        </script> &copy;  All rights reserved.
+                      
                     </p>
                 </div>
             </div>
