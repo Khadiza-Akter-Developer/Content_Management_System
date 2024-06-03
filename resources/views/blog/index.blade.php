@@ -65,7 +65,7 @@
                                         <tr>
                                             <td>{{ $it->id }}</td>
                                             <td>{{ $it->title }}</td>
-                                            <td><img src="{{ asset('uploads/blogs/' . $it->image) }}" width="70px"
+                                            <td><img src="{{ asset('uploads/blogs/' . $it->image) }}" style="width:90px; height:90px" alt="image" 
                                                     height="70px" alt="Image"></td>
                                             <td>{{ $it->description }}</td>
                                             <td><button class="btn btn-sm btn-secondary edit_blog"
