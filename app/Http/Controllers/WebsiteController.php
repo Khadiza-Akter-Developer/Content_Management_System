@@ -10,7 +10,7 @@ class WebsiteController extends Controller
 {
     public function home()
     {
-        $blog = Blog::all();
+        $blog = Blog::simplePaginate(1);
         
         return view('website.blog.index', compact('blog'));
     }

@@ -47,16 +47,9 @@
                         </div>
                     @endforeach
 
+{{ $blog->links() }}
+                   
 
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination post-pagination">
-                            <li class="page-item"><a class="page-link" href="blog-grid.html">Prev</a></li>
-                            <li class="page-item"><a class="page-link" href="blog-grid.html">1</a></li>
-                            <li class="page-item"><a class="page-link" href="blog-grid.html">2</a></li>
-                            <li class="page-item"><a class="page-link" href="blog-grid.html">3</a></li>
-                            <li class="page-item"><a class="page-link" href="blog-grid.html">Next</a></li>
-                        </ul>
-                    </nav>
                 </div>
                 <div class="col-lg-4">
                     <div class="pl-0 pl-xl-4">
