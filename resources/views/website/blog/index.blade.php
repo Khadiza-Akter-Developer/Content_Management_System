@@ -41,14 +41,14 @@
                                 <p>
                                 <p>{{ Str::limit($it->description, 500) }} </p>
                                 </p>
-                                <a href="{{ route('blogs.show',$it->id) }}" class="btn btn-main">Continue Reading</a>
+                                <a href="{{ route('blogs.show', $it->id) }}" class="btn btn-main">Continue Reading</a>
                             </div>
 
                         </div>
                     @endforeach
 
-{{ $blog->links() }}
-                   
+                    {{ $blog->links() }}
+
 
                 </div>
                 <div class="col-lg-4">
