@@ -108,10 +108,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="service-item">
                             <a class="icon" href="{{ route('blogs.show', ['blog' => $item->id]) }}">
-                            <img class="fixed-size-img" src="{{ URL::asset('uploads/blogs/' . $item->image) }}">
-                            <h4>{{ $item->title }}</h4>
-                            <p>{{ Str::limit($item->description, 50) }}</p>
-                        </a>
+                                <img class="fixed-size-img" src="{{ URL::asset('uploads/blogs/' . $item->image) }}">
+                                <h4>{{ $item->title }}</h4>
+                                <p>{{ Str::limit($item->description, 50) }}</p>
+                            </a>
                         </div>
                     </div>
                 @endforeach
@@ -126,10 +126,8 @@
                 <div class="col-md-12">
                     <div class="block">
                         <h2 class="mb-3">We design delightful digital experiences.</h2>
-                        <p>Read more about what we do and our philosophy of design. Judge for yourself The work and results
-                            <br> we’ve
-                            achieved for other clients, and meet our highly experienced Team who just love to design.
-                        </p>
+                        <p>Read more about what we do and our philosophy of design. Judge for yourself The work and results <br> we’ve
+                            achieved for other clients, and meet our highly experienced Team who just love to design.</p>
                         <a class="btn btn-main btn-solid-border" href="contact.html">Tell Us Your Story</a>
                     </div>
                 </div>

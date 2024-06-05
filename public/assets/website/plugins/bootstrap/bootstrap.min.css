@@ -5,6 +5,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  
  */
+
+ /* .short-height {
+    height: 150px; 
+} */
+
+/* our blog image grid  */
  img {
     max-width: 100%;
     height: auto;
@@ -40,14 +46,14 @@ section {
 }
 
 .fixed-size-img {
-  width: 100%; /* Ensure the image takes up the full width of its container */
-  height: 200px; /* Set a fixed height */
-  object-fit: cover; /* Ensure the image covers the area without stretching */
-  object-position: center; /* Center the image */
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  object-position: center; 
 }
 
 .service-item {
-  margin-bottom: 20px; /* Add some margin for spacing */
+  margin-bottom: 20px; 
 }
 
 
