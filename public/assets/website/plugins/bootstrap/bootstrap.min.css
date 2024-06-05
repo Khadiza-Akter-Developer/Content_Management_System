@@ -39,6 +39,17 @@ section {
     
 }
 
+.fixed-size-img {
+  width: 100%; /* Ensure the image takes up the full width of its container */
+  height: 200px; /* Set a fixed height */
+  object-fit: cover; /* Ensure the image covers the area without stretching */
+  object-position: center; /* Center the image */
+}
+
+.service-item {
+  margin-bottom: 20px; /* Add some margin for spacing */
+}
+
 
 
  

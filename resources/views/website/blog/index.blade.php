@@ -57,7 +57,7 @@
                 </div><!-- .col-md-7 close -->
                 <div class="col-md-5">
                     <div class="block">
-                        <img src="images/wrapper-img.png" alt="Img">
+                        <img src="{{ asset('assets/website/images/wrapper-img.png') }}" alt="Img">
                     </div>
                 </div><!-- .col-md-5 close -->
             </div>
@@ -96,27 +96,27 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="section-title">
-                        <h2>Our Blogs</h2>
+                        <h2>Our Services</h2>
                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, <br>
                             there live the
                             blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                @foreach ($blog as $it)
+                @foreach ($blog as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="service-item">
-                            <a href="{{ route('blogs.show', ['blog' => $it->id]) }}">
-                                <img class="d-block w-1 h-1" src="{{ URL::asset('uploads/blogs/' . $it->image) }}">
-                                <h4>{{ $it->title }}</h4>
-                                <p>{{ Str::limit($it->description, 50) }} </p>
+                            <a class="icon" href="{{ route('blogs.show', ['blog' => $item->id]) }}">
+                            <img class="fixed-size-img" src="{{ URL::asset('uploads/blogs/' . $item->image) }}">
+                            <h4>{{ $item->title }}</h4>
+                            <p>{{ Str::limit($item->description, 50) }}</p>
+                        </a>
                         </div>
                     </div>
                 @endforeach
-
             </div>
+
         </div>
     </section>
 
