@@ -39,6 +39,7 @@ Route::delete('about-delete', [AboutController::class, 'delete'])->name('about.d
 
 //website
 Route::get('/', [WebsiteController::class, 'home'])->name('home');
+Route::get('sliders',[WebsiteController::class,'showSlider'])->name('showSlider');
 
 
 Route::get('auth/dashboard', [DashboardController::class, 'dashboard'])->name('auth.dashboard')->middleware('auth');
@@ -46,3 +47,5 @@ Route::get('auth/dashboard', [DashboardController::class, 'dashboard'])->name('a
 Auth::routes();
 
 Route::get('/blogs/{blog}', [WebsiteController::class, 'show'])->name('blogs.show');
+
+

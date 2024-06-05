@@ -68,71 +68,36 @@
                                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="nav-item dropdown @@portfolio">
-                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio
+                                    <a class="nav-link dropdown-toggle" href="{{ route('showSlider') }}" id="dropdown03"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Slider
                                         <span class="ion-ios-arrow-down"></span></a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                                    {{-- <ul class="dropdown-menu" aria-labelledby="dropdown03">
                                         <li><a class="dropdown-item @@portfolioFilter"
-                                                href="portfolio.html">Portfolio Filter</a></li>
+                                                href="portfolio.html">Sliders</a></li>
                                         <li><a class="dropdown-item @@portfolioSingle"
-                                                href="portfolio-single.html">Portfolio Single</a></li>
-
-                                        <li class="dropdown dropdown-submenu dropright">
-                                            <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301"
-                                                role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">Sub Menu</a>
-
-                                            <ul class="dropdown-menu" aria-labelledby="dropdown0301">
-                                                <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                                                <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                                href="portfolio-single.html">Single Slider</a></li>
+                                    </ul> --}}
                                 </li>
-                                <li class="nav-item @@service"><a class="nav-link"
-                                        href="service.html">Service</a></li>
-                                <li class="nav-item dropdown active">
+
+                                {{-- <li class="nav-item dropdown active">
                                     <a class="nav-link dropdown-toggle" href="#" id="dropdown05"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <span
                                             class="ion-ios-arrow-down"></span></a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdown05">
-                                        <li><a class="dropdown-item activeGrid" href="blog-grid.html">Blog Grid</a></li>
-                                        <li><a class="dropdown-item activeSingle" href="blog-single.html">Blog
-                                                Single</a></li>
-                                        <li><a class="dropdown-item active" href="blog-right-sidebar.html">Blog Right
-                                                Sidebar</a></li>
-                                        <li><a class="dropdown-item activeLS" href="blog-left-sidebar.html">Blog Left
-                                                Sidebar</a></li>
-                                        <li><a class="dropdown-item activeFW" href="blog-full-width.html">Blog Full
-                                                Width</a></li>
-
-                                        <li class="dropdown dropdown-submenu dropleft">
-                                            <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0501"
-                                                role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">Sub Menu</a>
-
-                                            <ul class="dropdown-menu" aria-labelledby="dropdown0501">
-                                                <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                                                <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a class="dropdown-item activeGrid" href="blog-grid.html">Blogs</a></li>
+                                        <li><a class="dropdown-item activeSingle" href="blog-single.html"> Single Blog
+                                            </a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item dropdown @@pages">
                                     <a class="nav-link dropdown-toggle" href="#" id="dropdown05"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages <span
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About <span
                                             class="ion-ios-arrow-down"></span></a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdown05">
-                                        <li><a class="dropdown-item @@about" href="about.html">About
-                                                Us</a></li>
+                                        <li><a class="dropdown-item @@about" href="about.html">Abouts
+                                            </a></li>
                                         <li><a class="dropdown-item @@comingSoon"
-                                                href="coming-soon.html">Coming Soon</a></li>
-                                        <li><a class="dropdown-item @@404" href="404.html">404
-                                                Page</a></li>
-                                        <li><a class="dropdown-item @@faq" href="faq.html">FAQ</a>
-                                        </li>
-                                        <li><a class="dropdown-item @@pricing"
-                                                href="pricing.html">Pricing Table</a></li>
+                                                href="coming-soon.html">Single About</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item @@contact"><a class="nav-link"
@@ -158,7 +123,6 @@
                         <ul>
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="contact.html">Contact us</a></li>
-
                         </ul>
                     </div>
                     <p class="copyright mb-0">Copyright

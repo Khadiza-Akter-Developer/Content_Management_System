@@ -21,6 +21,39 @@
   background-size: cover;
   background-attachment: fixed;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+      section {
+          padding: 60px 0;
+          min-height: 100vh;
+      }
+
+#carousel-thumb .carousel-item:before {
+ content: "";
+ position: absolute;
+ z-index: 999;
+ background: #0000003d;
+ height: 100%;
+ width: 100%;
+ left: 0;
+ top: 0;
+}
+#carousel-thumb .carousel-indicators li {
+  width: 100px;
+  
+}
+
+#carousel-thumb .carousel-indicators {
+  bottom: 40px;
+}
+
+#carousel-thumb .carousel-indicators li img {
+  border: 2px solid #e2e2e2;
+}
+
 .hero-area .block {
   position: relative;
   z-index: 999999;

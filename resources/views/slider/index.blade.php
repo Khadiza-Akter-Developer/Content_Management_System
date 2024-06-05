@@ -22,10 +22,9 @@
                         <input type="file" id="image" class="form-control" placeholder="Image" name="image">
                     </div>
 
-                    <div class="form-body">
+                    <div class="form-body mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" required class="form-control" placeholder="Enter description"
-                            name="description">
+                        <input type="text" id="description" required class="form-control description-input" placeholder="Enter description" name="description">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -252,5 +251,7 @@
                     });
                 });
             });
+
+    
         </script>
     @endsection
