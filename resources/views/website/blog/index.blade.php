@@ -105,62 +105,16 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="icon ion-coffee"></i>
-                        <h4>Branding</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>
+                @foreach ($blog as $it)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="service-item">
+                            <img class="d-block w-1 h-1" src="{{ URL::asset('uploads/blogs/' . $it->image) }}">
+                            <h4>{{ $it->title }}</h4>
+                            <p>{{ Str::limit($it->description, 50) }} </p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="ion-compass"></i>
-                        <h4>Web Design</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="ion-image"></i>
-                        <h4>App Design</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="ion-bug"></i>
-                        <h4>Start Up</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="ion-headphone"></i>
-                        <h4>Logo Design</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="ion-leaf"></i>
-                        <h4>Development</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="ion-planet"></i>
-                        <h4>Brand Identity</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="ion-earth"></i>
-                        <h4>Brand Identity</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>

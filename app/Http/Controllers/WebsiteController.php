@@ -11,9 +11,11 @@ class WebsiteController extends Controller
     public function home()
     {
         //$latestBlogs = Blog::orderBy('created_at', 'desc')->take(5)->get();
+
+        $blog = Blog::all();
         $slider = Slider::all();
 
-        return view('website.blog.index', compact('slider'));
+        return view('website.blog.index', compact('blog', 'slider'));
     }
 
     public function show(Blog $blog)

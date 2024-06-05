@@ -49,3 +49,4 @@ Auth::routes();
 Route::get('/blogs/{blog}', [WebsiteController::class, 'show'])->name('blogs.show');
 
 
+Route::get('/blogs', [WebsiteController::class, 'blogshow'])->name('blogs.showAll');
