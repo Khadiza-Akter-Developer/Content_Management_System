@@ -108,9 +108,10 @@
                 @foreach ($blog as $it)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="service-item">
-                            <img class="d-block w-1 h-1" src="{{ URL::asset('uploads/blogs/' . $it->image) }}">
-                            <h4>{{ $it->title }}</h4>
-                            <p>{{ Str::limit($it->description, 50) }} </p>
+                            <a href="{{ route('blogs.show', ['blog' => $it->id]) }}">
+                                <img class="d-block w-1 h-1" src="{{ URL::asset('uploads/blogs/' . $it->image) }}">
+                                <h4>{{ $it->title }}</h4>
+                                <p>{{ Str::limit($it->description, 50) }} </p>
                         </div>
                     </div>
                 @endforeach
