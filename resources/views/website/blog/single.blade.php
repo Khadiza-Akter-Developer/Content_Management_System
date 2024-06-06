@@ -1,4 +1,4 @@
-@extends('layout.website')
+@extends('layout.master')
 @section('content')
     <section class="page-title bg-2">
         <div class="container">
