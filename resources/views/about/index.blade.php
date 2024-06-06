@@ -67,7 +67,7 @@
                                             <td>{{ $item->title }}</td>
                                             <td><img src="{{ asset('uploads/abouts/' . $item->image) }}" width="70px"
                                                     height="70px" alt="Image"></td>
-                                            <td>{{ $item->description }}</td>
+                                            <td>{{Str::limit($item->description,45 ) }}</td>
                                             <td><button class="btn btn-sm btn-secondary edit_about"
                                                     data-id="{{ $item->id }}">Edit</button></td>
                                             <td><button class="btn btn-sm bg-danger delete_about"
