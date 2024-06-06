@@ -50,6 +50,19 @@
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
 
+/* .fixed-description-blog{
+    max-width: 50px; 
+    max-height: 300px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: top;
+} */
+
+
+
+
 @-webkit-keyframes flash {
   0% {
     opacity: 1; }

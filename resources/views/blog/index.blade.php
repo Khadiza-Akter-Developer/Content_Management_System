@@ -23,8 +23,8 @@
                     </div>
 
                     <div class="form-body">
-                        <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" required class="form-control" placeholder="Enter description"
+                        <label for="description" class="form-label width: 20px height:10px">Description</label>
+                        <input type="text" id="description" required class="form-control" placeholder="Enter description" 
                             name="description">
                     </div>
                 </div>
@@ -51,11 +51,11 @@
                         <div class="card-body">
                             <table id="myTable" class="table table-striped">
                                 <thead>
-                                    <tr>
+                                    <tr >
                                         <th>ID</th>
                                         <th>Title</th>
                                         <th>Image</th>
-                                        <th>Description</th>
+                                        <th >Description</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
@@ -66,9 +66,9 @@
                                             <td>{{ $it->id }}</td>
                                             <td>{{ $it->title }}</td>
                                             <td><img src="{{ asset('uploads/blogs/' . $it->image) }}"
-                                                    style="width:70px; height:70px" alt="image" height="70px"
+                                                    style="width:40px; height:40px" alt="image" height="70px"
                                                     alt="Image"></td>
-                                            <td>{{ $it->description }}</td>
+                                            <td>{{Str::limit($it->description, 45) }}</td>
                                             <td><button class="btn btn-sm btn-secondary edit_blog"
                                                     data-id="{{ $it->id }}">Edit</button></td>
                                             <td><button class="btn btn-sm bg-danger delete_blog"
